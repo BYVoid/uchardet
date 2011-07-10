@@ -77,34 +77,45 @@ extern "C" {
 
 typedef void * uchardet_t;
 
+/**
+ * Create an encoding detector.
+ * @return a handle of a instance of uchardet
+ */
 uchardet_t uchardet_new();
 
+/**
+ * Delete an encoding detector.
+ * @param ud [in] handle of a instance of uchardet
+ */
 void uchardet_delete(uchardet_t ud);
-
 
 /**
  * Feed data to an encoding detector.
+ * @param ud [in] handle of a instance of uchardet
  * @param data [in] data
+ * @param len [in] number of byte of data
+ * @return non-zero number on failure.
  */
-void uchardet_handle_data(uchardet_t ud, const char * data, size_t len);
+int uchardet_handle_data(uchardet_t ud, const char * data, size_t len);
 
 /**
  * Notify an end of data to an encoding detctor.
+ * @param ud [in] handle of a instance of uchardet
  */
 void uchardet_data_end(uchardet_t ud);
 
 /**
  * Reset an encoding detector.
+ * @param ud [in] handle of a instance of uchardet
  */
 void uchardet_reset(uchardet_t ud);
 
 /**
  * Get the name of encoding that was detected.
+ * @param ud [in] handle of a instance of uchardet
  * @return name of charset
  */
 const char * uchardet_get_charset(uchardet_t ud);
-
-
 
 #ifdef __cplusplus
 }

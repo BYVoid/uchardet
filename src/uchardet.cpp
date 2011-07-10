@@ -81,11 +81,10 @@ void uchardet_delete(uchardet_t ud)
     delete reinterpret_cast<DllDetector*>(ud);
 }
 
-void uchardet_handle_data(uchardet_t ud, const char * data, size_t len)
+int uchardet_handle_data(uchardet_t ud, const char * data, size_t len)
 {
     nsresult ret = reinterpret_cast<DllDetector*>(ud)->HandleData(data, (PRUint32)len);
-    if (ret != NS_OK)
-        ; //TODO
+    return (ret != NS_OK);
 }
 
 void uchardet_data_end(uchardet_t ud)
