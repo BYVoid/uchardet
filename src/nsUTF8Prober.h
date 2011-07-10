@@ -38,7 +38,7 @@
 #ifndef nsUTF8Prober_h__
 #define nsUTF8Prober_h__
 
-#include "uchardet.h"
+#include "uchardetDefine.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 

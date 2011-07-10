@@ -43,7 +43,7 @@
 #ifndef nsSJISProber_h__
 #define nsSJISProber_h__
 
-#include "uchardet.h"
+#include "uchardetDefine.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 #include "JpCntx.h"

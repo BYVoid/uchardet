@@ -35,7 +35,7 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  *
  * ***** END LICENSE BLOCK ***** */
-#include "uchardet.h"
+#include "uchardetDefine.h"
 #include "nsCodingStateMachine.h"
 
 static PRUint32 HZ_cls[ 256 / 8 ] = {

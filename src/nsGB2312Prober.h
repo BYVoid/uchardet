@@ -38,7 +38,7 @@
 #ifndef nsGB2312Prober_h__
 #define nsGB2312Prober_h__
 
-#include "uchardet.h"
+#include "uchardetDefine.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 #include "CharDistribution.h"

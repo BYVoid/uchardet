@@ -38,7 +38,7 @@
 #ifndef nsEUCTWProber_h__
 #define nsEUCTWProber_h__
 
-#include "uchardet.h"
+#include "uchardetDefine.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 #include "CharDistribution.h"

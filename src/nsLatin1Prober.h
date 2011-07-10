@@ -39,7 +39,7 @@
 #ifndef nsLatin1Prober_h__
 #define nsLatin1Prober_h__
 
-#include "uchardet.h"
+#include "uchardetDefine.h"
 #include "nsCharSetProber.h"
 
 #define FREQ_CAT_NUM    4

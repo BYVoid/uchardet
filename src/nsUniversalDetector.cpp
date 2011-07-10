@@ -38,7 +38,7 @@
 
 #include "nscore.h"
 
-#include "uchardet.h"
+#include "uchardetDefine.h"
 #include "nsUniversalDetector.h"
 
 #include "nsMBCSGroupProber.h"

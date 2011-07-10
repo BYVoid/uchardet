@@ -35,7 +35,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#include "uchardet.h"
+#include "uchardetDefine.h"
 #include "nsSBCharSetProber.h"
 
 

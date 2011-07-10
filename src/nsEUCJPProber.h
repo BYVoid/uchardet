@@ -43,7 +43,7 @@
 #ifndef nsEUCJPProber_h__
 #define nsEUCJPProber_h__
 
-#include "uchardet.h"
+#include "uchardetDefine.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 #include "JpCntx.h"
