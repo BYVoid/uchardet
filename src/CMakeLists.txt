@@ -11,26 +11,26 @@ set(
 	LangBulgarianModel.cpp
 	LangCyrillicModel.cpp
 	LangGreekModel.cpp
-	LangHebrewModel.cpp
 	LangHungarianModel.cpp
+	LangHebrewModel.cpp
 	LangThaiModel.cpp
-	nsBig5Prober.cpp
+	nsHebrewProber.cpp
 	nsCharSetProber.cpp
-	nsEscCharsetProber.cpp
-	nsEscSM.cpp
+	nsBig5Prober.cpp
 	nsEUCJPProber.cpp
 	nsEUCKRProber.cpp
 	nsEUCTWProber.cpp
+	nsEscCharsetProber.cpp
+	nsEscSM.cpp
 	nsGB2312Prober.cpp
-	nsHebrewProber.cpp
-	nsLatin1Prober.cpp
 	nsMBCSGroupProber.cpp
 	nsMBCSSM.cpp
-	nsSBCharSetProber.cpp
 	nsSBCSGroupProber.cpp
+	nsSBCharSetProber.cpp
 	nsSJISProber.cpp
-	nsUniversalDetector.cpp
 	nsUTF8Prober.cpp
+	nsLatin1Prober.cpp
+	nsUniversalDetector.cpp
 	uchardet.cpp
 )
 

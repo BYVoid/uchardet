@@ -37,67 +37,69 @@
 #include "uchardet.h"
 #include "nscore.h"
 #include "nsUniversalDetector.h"
-#include <string.h>
+#include <string>
 
-class DllDetector : public nsUniversalDetector
+using std::string;
+
+class HandleUniversalDetector : public nsUniversalDetector
 {
 protected:
-    char charset_[256];
+	string m_charset;
 
 public:
-    DllDetector()
-    : nsUniversalDetector()
+    HandleUniversalDetector()
+    : nsUniversalDetector(NS_FILTER_ALL)
     {
-        *charset_=0;
+        m_charset = "";
     }
 
-    virtual ~DllDetector()
+    virtual ~HandleUniversalDetector()
     {}
 
     virtual void Report(const char* charset)
     {
-        strncpy( charset_ , charset , sizeof(charset_) );
+        m_charset = charset;
     }
 
     virtual void Reset()
     {
         nsUniversalDetector::Reset();
-        *charset_=0;
+        m_charset = "";
     }
 
     const char* GetCharset() const
     {
-        return charset_;
+        return m_charset.c_str();
     }
 };
 
 uchardet_t uchardet_new()
 {
-    return reinterpret_cast<uchardet_t> (new DllDetector());
+    return reinterpret_cast<uchardet_t> (new HandleUniversalDetector());
 }
 
 void uchardet_delete(uchardet_t ud)
 {
-    delete reinterpret_cast<DllDetector*>(ud);
+    delete reinterpret_cast<HandleUniversalDetector*>(ud);
 }
 
 int uchardet_handle_data(uchardet_t ud, const char * data, size_t len)
 {
-    nsresult ret = reinterpret_cast<DllDetector*>(ud)->HandleData(data, (PRUint32)len);
+    nsresult ret = reinterpret_cast<HandleUniversalDetector*>(ud)->HandleData(data, (PRUint32)len);
     return (ret != NS_OK);
 }
 
 void uchardet_data_end(uchardet_t ud)
 {
-    reinterpret_cast<DllDetector*>(ud)->DataEnd();
+    reinterpret_cast<HandleUniversalDetector*>(ud)->DataEnd();
 }
 
 void uchardet_reset(uchardet_t ud)
 {
-    reinterpret_cast<DllDetector*>(ud)->Reset();
+    reinterpret_cast<HandleUniversalDetector*>(ud)->Reset();
 }
 
 const char* uchardet_get_charset(uchardet_t ud)
 {
-    return reinterpret_cast<DllDetector*>(ud)->GetCharset();
+    return reinterpret_cast<HandleUniversalDetector*>(ud)->GetCharset();
 }

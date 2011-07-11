@@ -38,18 +38,20 @@
 #ifndef nsEUCKRProber_h__
 #define nsEUCKRProber_h__
 
-#include "uchardetDefine.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 #include "CharDistribution.h"
 
 class nsEUCKRProber: public nsCharSetProber {
 public:
-  nsEUCKRProber(void){mCodingSM = new nsCodingStateMachine(&EUCKRSMModel);
-                      Reset();}
+  nsEUCKRProber(PRBool aIsPreferredLanguage)
+    :mIsPreferredLanguage(aIsPreferredLanguage)
+  {mCodingSM = new nsCodingStateMachine(&EUCKRSMModel);
+    Reset();
+  }
   virtual ~nsEUCKRProber(void){delete mCodingSM;}
   nsProbingState HandleData(const char* aBuf, PRUint32 aLen);
-  const char* GetCharSetName() {return CHARDET_ENCODING_EUC_KR;}
+  const char* GetCharSetName() {return "EUC-KR";}
   nsProbingState GetState(void) {return mState;}
   void      Reset(void);
   float     GetConfidence(void);
@@ -64,6 +66,7 @@ protected:
   //EUCKRContextAnalysis mContextAnalyser;
   EUCKRDistributionAnalysis mDistributionAnalyser;
   char mLastChar[2];
+  PRBool mIsPreferredLanguage;
 
 };
 

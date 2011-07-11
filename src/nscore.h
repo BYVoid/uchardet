@@ -42,6 +42,8 @@ typedef int PRInt32;
 typedef unsigned int PRUint32;
 typedef short PRInt16;
 typedef unsigned short PRUint16;
+typedef signed char PRInt8;
+typedef unsigned char PRUint8;
 
 #define PR_FALSE false
 #define PR_TRUE true

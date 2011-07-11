@@ -35,14 +35,13 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#include "uchardetDefine.h"
 #include "nsSBCharSetProber.h"
 
 
 
 //KOI8-R language model
 //Character Mapping Table:
-unsigned char KOI8R_CharToOrderMap[] =
+static const unsigned char KOI8R_CharToOrderMap[] =
 {
 255,255,255,255,255,255,255,255,255,255,254,255,255,254,255,255,  //00
 255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,  //10
@@ -62,7 +61,7 @@ unsigned char KOI8R_CharToOrderMap[] =
  35, 43, 45, 32, 40, 52, 56, 33, 61, 62, 51, 57, 47, 63, 50, 70,  //f0
 };
 
-unsigned char win1251_CharToOrderMap[] =
+static const unsigned char win1251_CharToOrderMap[] =
 {
 255,255,255,255,255,255,255,255,255,255,254,255,255,254,255,255,  //00
 255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,  //10
@@ -82,7 +81,7 @@ unsigned char win1251_CharToOrderMap[] =
   9,  7,  6, 14, 39, 26, 28, 22, 25, 29, 54, 18, 17, 30, 27, 16,
 };
 
-unsigned char latin5_CharToOrderMap[] =
+static const unsigned char latin5_CharToOrderMap[] =
 {
 255,255,255,255,255,255,255,255,255,255,254,255,255,254,255,255,  //00
 255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,  //10
@@ -102,7 +101,7 @@ unsigned char latin5_CharToOrderMap[] =
 239, 68,240,241,242,243,244,245,246,247,248,249,250,251,252,255,
 };
 
-unsigned char macCyrillic_CharToOrderMap[] =
+static const unsigned char macCyrillic_CharToOrderMap[] =
 {
 255,255,255,255,255,255,255,255,255,255,254,255,255,254,255,255,  //00
 255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,  //10
@@ -122,7 +121,7 @@ unsigned char macCyrillic_CharToOrderMap[] =
   9,  7,  6, 14, 39, 26, 28, 22, 25, 29, 54, 18, 17, 30, 27,255,
 };
 
-unsigned char IBM855_CharToOrderMap[] =
+static const unsigned char IBM855_CharToOrderMap[] =
 {
 255,255,255,255,255,255,255,255,255,255,254,255,255,254,255,255,  //00
 255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,  //10
@@ -142,7 +141,7 @@ unsigned char IBM855_CharToOrderMap[] =
 250, 18, 62, 20, 51, 25, 57, 30, 47, 29, 63, 22, 50,251,252,255,
 };
 
-unsigned char IBM866_CharToOrderMap[] =
+static const unsigned char IBM866_CharToOrderMap[] =
 {
 255,255,255,255,255,255,255,255,255,255,254,255,255,254,255,255,  //00
 255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,  //10
@@ -168,7 +167,7 @@ unsigned char IBM866_CharToOrderMap[] =
 //first 1024 sequences: 2.3389%
 //rest  sequences:      0.1237%
 //negative sequences:   0.0009% 
-char RussianLangModel[] = 
+static const PRUint8 RussianLangModel[] = 
 {
 0,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,1,3,3,3,3,1,3,3,3,2,3,2,3,3,
 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,0,3,2,2,2,2,2,0,0,2,
@@ -301,56 +300,56 @@ char RussianLangModel[] =
 };
 
 
-SequenceModel Koi8rModel = 
+const SequenceModel Koi8rModel = 
 {
   KOI8R_CharToOrderMap,
   RussianLangModel,
   (float)0.976601,
   PR_FALSE,
-  CHARDET_ENCODING_KOI8_R
+  "KOI8-R"
 };
 
-SequenceModel Win1251Model = 
+const SequenceModel Win1251Model = 
 {
   win1251_CharToOrderMap,
   RussianLangModel,
   (float)0.976601,
   PR_FALSE,
-  CHARDET_ENCODING_WINDOWS_1251
+  "windows-1251"
 };
 
-SequenceModel Latin5Model = 
+const SequenceModel Latin5Model = 
 {
   latin5_CharToOrderMap,
   RussianLangModel,
   (float)0.976601,
   PR_FALSE,
-  CHARDET_ENCODING_ISO_8859_5
+  "ISO-8859-5"
 };
 
-SequenceModel MacCyrillicModel = 
+const SequenceModel MacCyrillicModel = 
 {
   macCyrillic_CharToOrderMap,
   RussianLangModel,
   (float)0.976601,
   PR_FALSE,
-  CHARDET_ENCODING_MACCYRILLIC
+  "x-mac-cyrillic"
 };
 
-SequenceModel Ibm866Model = 
+const SequenceModel Ibm866Model = 
 {
   IBM866_CharToOrderMap,
   RussianLangModel,
   (float)0.976601,
   PR_FALSE,
-  CHARDET_ENCODING_IBM866
+  "IBM866"
 };
 
-SequenceModel Ibm855Model = 
+const SequenceModel Ibm855Model = 
 {
   IBM855_CharToOrderMap,
   RussianLangModel,
   (float)0.976601,
   PR_FALSE,
-  CHARDET_ENCODING_IBM855
+  "IBM855"
 };

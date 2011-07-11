@@ -61,7 +61,7 @@ public:
   virtual void      SetOpion() = 0;
 
 #ifdef DEBUG_chardet
-  virtual void  DumpStatus() {}
+  virtual void  DumpStatus() {};
 #endif
 
   // Helper functions used in the Latin1 and Group probers.

@@ -43,7 +43,6 @@
 #ifndef nsEUCJPProber_h__
 #define nsEUCJPProber_h__
 
-#include "uchardetDefine.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 #include "JpCntx.h"
@@ -51,11 +50,13 @@
 
 class nsEUCJPProber: public nsCharSetProber {
 public:
-  nsEUCJPProber(void){mCodingSM = new nsCodingStateMachine(&EUCJPSMModel);
-                      Reset();}
+  nsEUCJPProber(PRBool aIsPreferredLanguage)
+    :mIsPreferredLanguage(aIsPreferredLanguage)
+  {mCodingSM = new nsCodingStateMachine(&EUCJPSMModel);
+    Reset();}
   virtual ~nsEUCJPProber(void){delete mCodingSM;}
   nsProbingState HandleData(const char* aBuf, PRUint32 aLen);
-  const char* GetCharSetName() {return CHARDET_ENCODING_EUC_JP;}
+  const char* GetCharSetName() {return "EUC-JP";}
   nsProbingState GetState(void) {return mState;}
   void      Reset(void);
   float     GetConfidence(void);
@@ -69,6 +70,7 @@ protected:
   EUCJPDistributionAnalysis mDistributionAnalyser;
 
   char mLastChar[2];
+  PRBool mIsPreferredLanguage;
 };
 
 

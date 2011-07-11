@@ -35,7 +35,6 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#include "uchardetDefine.h"
 #include "nsHebrewProber.h"
 #include <stdio.h>
 
@@ -59,8 +58,8 @@
 // If the difference is below this, don't rely at all on the model score distance.
 #define MIN_MODEL_DISTANCE (0.01)
 
-#define VISUAL_HEBREW_NAME (CHARDET_ENCODING_ISO_8859_8)
-#define LOGICAL_HEBREW_NAME (CHARDET_ENCODING_WINDOWS_1255)
+#define VISUAL_HEBREW_NAME ("ISO-8859-8")
+#define LOGICAL_HEBREW_NAME ("windows-1255")
 
 PRBool nsHebrewProber::isFinal(char c)
 {

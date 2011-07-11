@@ -43,7 +43,6 @@
 #ifndef nsSJISProber_h__
 #define nsSJISProber_h__
 
-#include "uchardetDefine.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 #include "JpCntx.h"
@@ -52,11 +51,13 @@
 
 class nsSJISProber: public nsCharSetProber {
 public:
-  nsSJISProber(void){mCodingSM = new nsCodingStateMachine(&SJISSMModel);
-                      Reset();}
+  nsSJISProber(PRBool aIsPreferredLanguage)
+    :mIsPreferredLanguage(aIsPreferredLanguage)
+  {mCodingSM = new nsCodingStateMachine(&SJISSMModel);
+    Reset();}
   virtual ~nsSJISProber(void){delete mCodingSM;}
   nsProbingState HandleData(const char* aBuf, PRUint32 aLen);
-  const char* GetCharSetName() {return CHARDET_ENCODING_SHIFT_JIS;}
+  const char* GetCharSetName() {return "Shift_JIS";}
   nsProbingState GetState(void) {return mState;}
   void      Reset(void);
   float     GetConfidence(void);
@@ -70,6 +71,7 @@ protected:
   SJISDistributionAnalysis mDistributionAnalyser;
 
   char mLastChar[2];
+  PRBool mIsPreferredLanguage;
 
 };
 

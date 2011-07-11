@@ -39,7 +39,6 @@
 #ifndef nsLatin1Prober_h__
 #define nsLatin1Prober_h__
 
-#include "uchardetDefine.h"
 #include "nsCharSetProber.h"
 
 #define FREQ_CAT_NUM    4
@@ -49,7 +48,7 @@ public:
   nsLatin1Prober(void){Reset();}
   virtual ~nsLatin1Prober(void){}
   nsProbingState HandleData(const char* aBuf, PRUint32 aLen);
-  const char* GetCharSetName() {return CHARDET_ENCODING_WINDOWS_1252;}
+  const char* GetCharSetName() {return "windows-1252";}
   nsProbingState GetState(void) {return mState;}
   void      Reset(void);
   float     GetConfidence(void);

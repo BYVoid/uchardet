@@ -44,38 +44,18 @@
 #ifndef VERSION
 #define VERSION "Unknown"
 #endif
-#define BUFFER_SIZE 32768
+#define BUFFER_SIZE 65536
+
+char buffer[BUFFER_SIZE];
 
 void detect(FILE * fp)
 {
     uchardet_t handle = uchardet_new();
 
-    size_t size = BUFFER_SIZE;
-    char * buffer_in = (char *) malloc(size * sizeof(char));
-
-    while (fgets(buffer_in, size, fp) != NULL)
+    while (!feof(fp))
     {
-        size_t freesize = size;
-
-        char * buffer_in_p = buffer_in;
-        size_t line_length = strlen(buffer_in_p);
-        while (line_length + 1 == freesize && buffer_in_p[line_length - 2] != '\n')
-        {
-            buffer_in_p += size - 1;
-            freesize = size + 1;
-            size += size;
-            size_t offset = buffer_in_p - buffer_in;
-            buffer_in = (char *) realloc(buffer_in, size * sizeof(char));
-            buffer_in_p = buffer_in + offset;
-
-            if (fgets(buffer_in_p, freesize, fp) == NULL)
-                break;
-
-            line_length = strlen(buffer_in_p);
-        }
-
-        int retval = uchardet_handle_data(handle, buffer_in, strlen(buffer_in));
-
+        size_t len = fread(buffer, 1, BUFFER_SIZE, fp);
+        int retval = uchardet_handle_data(handle, buffer, len);
         if (retval != 0)
         {
             fprintf(stderr, "Handle data error.\n");
@@ -84,10 +64,10 @@ void detect(FILE * fp)
     }
     uchardet_data_end(handle);
 
-    printf("%s\n", uchardet_get_charset(handle));
+    const char * charset = uchardet_get_charset(handle);
+    printf("%s\n", charset);
 
     uchardet_delete(handle);
-    free(buffer_in);
 }
 
 void show_version()

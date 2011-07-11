@@ -35,7 +35,6 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#include "uchardetDefine.h"
 #include "nsSBCharSetProber.h"
 
 
@@ -50,7 +49,7 @@
 //The following result for thai was collected from a limited sample (1M). 
 
 //Character Mapping Table:
-unsigned char TIS620CharToOrderMap[] =
+static const unsigned char TIS620CharToOrderMap[] =
 {
 255,255,255,255,255,255,255,255,255,255,254,255,255,254,255,255,  //00
 255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,  //10
@@ -79,7 +78,7 @@ unsigned char TIS620CharToOrderMap[] =
 //first 1024 sequences:7.3177%
 //rest  sequences:     1.0230%
 //negative sequences:  0.0436% 
-char ThaiLangModel[] = 
+static const PRUint8 ThaiLangModel[] = 
 {
 0,1,3,3,3,3,0,0,3,3,0,3,3,0,3,3,3,3,3,3,3,3,0,0,3,3,3,0,3,3,3,3,
 0,3,3,0,0,0,1,3,0,3,3,2,3,3,0,1,2,3,3,3,3,0,2,0,2,0,0,3,2,1,2,2,
@@ -212,11 +211,11 @@ char ThaiLangModel[] =
 };
 
 
-SequenceModel TIS620ThaiModel = 
+const SequenceModel TIS620ThaiModel = 
 {
   TIS620CharToOrderMap,
   ThaiLangModel,
   (float)0.926386,
   PR_FALSE,
-  CHARDET_ENCODING_TIS_620
+  "TIS-620"
 };
