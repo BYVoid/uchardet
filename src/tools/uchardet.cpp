@@ -65,8 +65,11 @@ void detect(FILE * fp)
     uchardet_data_end(handle);
 
     const char * charset = uchardet_get_charset(handle);
-    printf("%s\n", charset);
-
+    if (*charset)
+    	printf("%s\n", charset);
+	else
+		printf("ascii/unknown\n");
+	
     uchardet_delete(handle);
 }
 

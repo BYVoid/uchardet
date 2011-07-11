@@ -81,7 +81,7 @@ void uchardet_reset(uchardet_t ud);
 /**
  * Get the name of encoding that was detected.
  * @param ud [in] handle of a instance of uchardet
- * @return name of charset
+ * @return name of charset on success and "" on failure or pure ascii.
  */
 const char * uchardet_get_charset(uchardet_t ud);
 
