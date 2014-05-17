@@ -85,6 +85,15 @@ install(
 	LIBRARY DESTINATION
 		${DIR_LIBRARY}
 )
+else (NOT WIN32)
+install(
+	TARGETS
+		${UCHARDET_TARGET}
+        RUNTIME DESTINATION
+                ${DIR_BIN}
+	ARCHIVE DESTINATION
+		${DIR_LIBRARY}
+)
 endif (NOT WIN32)
 
 install(
