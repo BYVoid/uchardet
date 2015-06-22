@@ -19,7 +19,7 @@ if (APPLE)
 	set(LINK_FLAGS
 		"${LINK_FLAGS} -Wl,-exported_symbols_list,'${_symbols_list}'")
 
-elseif (CMAKE_C_COMPILER_ID STREQUAL GNU)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL GNU)
 	# Create a version script for GNU ld.
 	set(_symbols "{ global: ${UCHARDET_SYMBOLS}; local: *; };")
 	set(_version_script "${CMAKE_CURRENT_BINARY_DIR}/version.script")
@@ -30,8 +30,7 @@ elseif (CMAKE_C_COMPILER_ID STREQUAL GNU)
 endif (APPLE)
 
 set_target_properties(
-	${LIBUCHARDET_TARGET}
-	${LIBUCHARDET_STATIC_TARGET}
+	${UCHARDET_TARGET}
 	PROPERTIES
 		LINK_FLAGS
 			"${LINK_FLAGS}"
