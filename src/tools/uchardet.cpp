@@ -88,7 +88,7 @@ void show_usage()
 {
     show_version();
     printf("Usage:\n");
-    printf(" uchardet [Options] [File]\n");
+    printf(" uchardet [Options] [File]...\n");
     printf("\n");
     printf("Options:\n");
     printf(" -v, --version         Print version and build information.\n");
@@ -122,20 +122,24 @@ int main(int argc, char ** argv)
         }
     }
 
-    FILE * f = stdin;
-    if (argc == 2)
+    FILE * f = NULL;
+    int error_seen = 0;
+    for (int i = 1; i < argc; i++)
     {
-        f = fopen(argv[1], "r");
+        char *filename = argv[i];
+        f = fopen(filename, "r");
         if (f == NULL)
         {
-            fprintf(stderr, "Cannot open file.\n");
-            return 1;
+            fprintf(stderr, "Cannot open file '%s'\n", filename);
+            error_seen = 1;
+            continue;
         }
+        if (argc > 2) {
+            printf("%s: ", filename);
+        }
+        detect(f);
+        fclose(f);
     }
 
-    detect(f);
-
-    fclose(f);
-
-    return 0;
+    return error_seen;
 }
