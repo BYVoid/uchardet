@@ -40,6 +40,7 @@
 #include <cstdlib>
 #include <getopt.h>
 #include <iostream>
+#include <stdio.h>
 
 #ifndef VERSION
 #define VERSION "Unknown"
@@ -135,7 +136,7 @@ int main(int argc, char ** argv)
         f = fopen(filename, "r");
         if (f == NULL)
         {
-            fprintf(stderr, "Cannot open file '%s'\n", filename);
+            perror(filename);
             error_seen = 1;
             continue;
         }
