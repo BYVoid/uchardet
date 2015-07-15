@@ -122,11 +122,16 @@ int main(int argc, char ** argv)
         }
     }
 
-    FILE * f = NULL;
+    FILE * f = stdin;
     int error_seen = 0;
+    if (argc < 2)
+    {
+        // No file arg, use stdin by default
+        detect(f);
+    }
     for (int i = 1; i < argc; i++)
     {
-        char *filename = argv[i];
+        const char *filename = argv[i];
         f = fopen(filename, "r");
         if (f == NULL)
         {
@@ -134,11 +139,11 @@ int main(int argc, char ** argv)
             error_seen = 1;
             continue;
         }
-        if (argc > 2) {
+        if (argc > 2)
+        {
             printf("%s: ", filename);
         }
         detect(f);
-        fclose(f);
     }
 
     return error_seen;
