@@ -34,8 +34,8 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  *
  * ***** END LICENSE BLOCK ***** */
-#ifndef ___UCHARDET_H___
-#define ___UCHARDET_H___
+#ifndef UCHARDET_H___
+#define UCHARDET_H___
 
 #ifdef __cplusplus
 extern "C" {
@@ -43,13 +43,13 @@ extern "C" {
 
 #include <stddef.h>
 
-typedef void * uchardet_t;
+typedef struct uchardet * uchardet_t;
 
 /**
  * Create an encoding detector.
  * @return a handle of a instance of uchardet
  */
-uchardet_t uchardet_new();
+uchardet_t uchardet_new(void);
 
 /**
  * Delete an encoding detector.
