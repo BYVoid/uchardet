@@ -73,7 +73,7 @@ public:
     }
 };
 
-uchardet_t uchardet_new()
+uchardet_t uchardet_new(void)
 {
     return reinterpret_cast<uchardet_t> (new HandleUniversalDetector());
 }
