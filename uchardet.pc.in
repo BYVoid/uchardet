@@ -4,7 +4,7 @@ libdir=@DIR_LIBRARY@
 includedir=@DIR_INCLUDE@
 
 Name: uchardet
-Description: universalchardet
+Description: An encoding detector library ported from Mozilla
 Version: @UCHARDET_VERSION@
 Requires:
 Libs: -L${libdir} -luchardet
