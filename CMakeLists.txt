@@ -9,7 +9,7 @@ set (PACKAGE_URL http://code.google.com/p/uchardet/)
 set (PACKAGE_BUGREPORT http://code.google.com/p/uchardet/issues/entry)
 set (UCHARDET_VERSION_MAJOR 0)
 set (UCHARDET_VERSION_MINOR 0)
-set (UCHARDET_VERSION_REVISION 1)
+set (UCHARDET_VERSION_REVISION 2)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
 	set (version_suffix .Debug)
