@@ -49,9 +49,9 @@
 
 char buffer[BUFFER_SIZE];
 
-void detect(FILE * fp)
+void detect(FILE * fp, const int filters)
 {
-    uchardet_t handle = uchardet_new(UC_FILTER_ALL);
+    uchardet_t handle = uchardet_new(filters);
 
     while (!feof(fp))
     {
@@ -94,15 +94,20 @@ void show_usage()
     printf("Options:\n");
     printf(" -v, --version         Print version and build information.\n");
     printf(" -h, --help            Print this help.\n");
+    printf(" -f, --hint            A comma-separated list of language filters among:\n");
+    printf("                       \"Chinese\", \"Japanese\", \"Korean\", \"CJK\", \"non-cjk\", \"all\" (default).\n");
     printf("\n");
 }
 
 int main(int argc, char ** argv)
 {
+    int filters = UC_FILTER_ALL;
+
     static struct option longopts[] =
     {
         { "version", no_argument, NULL, 'v' },
         { "help", no_argument, NULL, 'h' },
+        { "hint", required_argument, NULL, 'f' },
         { 0, 0, 0, 0 },
     };
 
@@ -117,6 +122,48 @@ int main(int argc, char ** argv)
         case 'h':
             show_usage();
             return 0;
+        case 'f':
+        {
+            char *langs = optarg;
+            char *lang  = strtok(langs, ",");
+
+            filters = 0;
+            while (lang)
+            {
+                if (strcasecmp(lang, "chinese") == 0)
+                {
+                    filters |= UC_FILTER_CHINESE;
+                }
+                else if (strcasecmp(lang, "japanese") == 0)
+                {
+                    filters |= UC_FILTER_JAPANESE;
+                }
+                else if (strcasecmp(lang, "korean") == 0)
+                {
+                    filters |= UC_FILTER_KOREAN;
+                }
+                else if (strcasecmp(lang, "cjk") == 0)
+                {
+                    filters |= UC_FILTER_CJK;
+                }
+                else if (strcasecmp(lang, "non-cjk") == 0)
+                {
+                    filters |= UC_FILTER_NON_CJK;
+                }
+                else if (strcasecmp(lang, "all") == 0)
+                {
+                    filters |= UC_FILTER_ALL;
+                }
+                else
+                {
+                    printf("Unknown language filter \"%s\".\n", lang);
+                    return 1;
+                }
+
+                lang = strtok(NULL, ",");
+            }
+        }
+          break;
         case '?':
             printf("Please use %s --help.\n", argv[0]);
             return 1;
@@ -125,12 +172,12 @@ int main(int argc, char ** argv)
 
     FILE * f = stdin;
     int error_seen = 0;
-    if (argc < 2)
+    if (argc - optind < 1)
     {
         // No file arg, use stdin by default
-        detect(f);
+        detect(f, filters);
     }
-    for (int i = 1; i < argc; i++)
+    for (int i = optind; i < argc; i++)
     {
         const char *filename = argv[i];
         f = fopen(filename, "r");
@@ -144,7 +191,7 @@ int main(int argc, char ** argv)
         {
             printf("%s: ", filename);
         }
-        detect(f);
+        detect(f, filters);
     }
 
     return error_seen;
