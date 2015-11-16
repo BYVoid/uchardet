@@ -75,7 +75,7 @@ public:
 
     const char* GetCharset() const
     {
-        return m_charset;
+        return m_charset? m_charset : "";
     }
 };
 
