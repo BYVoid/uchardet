@@ -46,8 +46,8 @@ protected:
     char *m_charset;
 
 public:
-    HandleUniversalDetector()
-    : nsUniversalDetector(NS_FILTER_ALL)
+    HandleUniversalDetector(PRUint32 aLanguageFilter)
+    : nsUniversalDetector(aLanguageFilter)
     , m_charset(0)
     {
     }
@@ -79,9 +79,9 @@ public:
     }
 };
 
-uchardet_t uchardet_new(void)
+uchardet_t uchardet_new(const int langs)
 {
-    return reinterpret_cast<uchardet_t> (new HandleUniversalDetector());
+    return reinterpret_cast<uchardet_t> (new HandleUniversalDetector(langs));
 }
 
 void uchardet_delete(uchardet_t ud)

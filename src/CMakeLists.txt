@@ -2,6 +2,7 @@
 set(
 	UCHARDET_HEADERS
 	uchardet.h
+	uchardet-filters.h
 )
 
 set(

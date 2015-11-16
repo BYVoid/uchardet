@@ -1,4 +1,3 @@
-/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
@@ -12,14 +11,15 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Mozilla Communicator client code.
+ * The Original Code is Mozilla Universal charset detector code.
  *
  * The Initial Developer of the Original Code is
  * Netscape Communications Corporation.
- * Portions created by the Initial Developer are Copyright (C) 1998
+ * Portions created by the Initial Developer are Copyright (C) 2001
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
+ *          Jehan <jehan@girinstud.io>
  *
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -35,42 +35,15 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#ifndef nsUniversalDetector_h__
-#define nsUniversalDetector_h__
-
-class nsCharSetProber;
-
-#define NUM_OF_CHARSET_PROBERS  3
-
-typedef enum {
-  ePureAscii = 0,
-  eEscAscii  = 1,
-  eHighbyte  = 2
-} nsInputState;
-
-class nsUniversalDetector {
-public:
-   nsUniversalDetector(PRUint32 aLanguageFilter);
-   virtual ~nsUniversalDetector();
-   virtual nsresult HandleData(const char* aBuf, PRUint32 aLen);
-   virtual void DataEnd(void);
-
-protected:
-   virtual void Report(const char* aCharset) = 0;
-   virtual void Reset();
-   nsInputState  mInputState;
-   PRBool  mDone;
-   PRBool  mInTag;
-   PRBool  mStart;
-   PRBool  mGotData;
-   char    mLastChar;
-   const char *  mDetectedCharset;
-   PRInt32 mBestGuess;
-   PRUint32 mLanguageFilter;
-
-   nsCharSetProber  *mCharSetProbers[NUM_OF_CHARSET_PROBERS];
-   nsCharSetProber  *mEscCharSetProber;
-};
-
-#endif
-
+#define UC_FILTER_CHINESE_SIMPLIFIED  0x01
+#define UC_FILTER_CHINESE_TRADITIONAL 0x02
+#define UC_FILTER_JAPANESE            0x04
+#define UC_FILTER_KOREAN              0x08
+#define UC_FILTER_NON_CJK             0x10
+#define UC_FILTER_ALL                 0x1F
+#define UC_FILTER_CHINESE (UC_FILTER_CHINESE_SIMPLIFIED | \
+                           UC_FILTER_CHINESE_TRADITIONAL)
+#define UC_FILTER_CJK (UC_FILTER_CHINESE_SIMPLIFIED | \
+                       UC_FILTER_CHINESE_TRADITIONAL | \
+                       UC_FILTER_JAPANESE | \
+                       UC_FILTER_KOREAN)

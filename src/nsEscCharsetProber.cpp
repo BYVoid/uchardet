@@ -39,18 +39,20 @@
 #include "nsEscCharsetProber.h"
 #include "nsUniversalDetector.h"
 
+#include "uchardet-filters.h"
+
 nsEscCharSetProber::nsEscCharSetProber(PRUint32 aLanguageFilter)
 {
   for (PRUint32 i = 0; i < NUM_OF_ESC_CHARSETS; i++)
     mCodingSM[i] = nsnull;
-  if (aLanguageFilter & NS_FILTER_CHINESE_SIMPLIFIED) 
+  if (aLanguageFilter & UC_FILTER_CHINESE_SIMPLIFIED)
   {
     mCodingSM[0] = new nsCodingStateMachine(&HZSMModel);
     mCodingSM[1] = new nsCodingStateMachine(&ISO2022CNSMModel);
   }
-  if (aLanguageFilter & NS_FILTER_JAPANESE)
+  if (aLanguageFilter & UC_FILTER_JAPANESE)
     mCodingSM[2] = new nsCodingStateMachine(&ISO2022JPSMModel);
-  if (aLanguageFilter & NS_FILTER_KOREAN)
+  if (aLanguageFilter & UC_FILTER_KOREAN)
     mCodingSM[3] = new nsCodingStateMachine(&ISO2022KRSMModel);
   mActiveSM = NUM_OF_ESC_CHARSETS;
   mState = eDetecting;

@@ -45,6 +45,8 @@
 #include "nsEscCharsetProber.h"
 #include "nsLatin1Prober.h"
 
+#include "uchardet-filters.h"
+
 nsUniversalDetector::nsUniversalDetector(PRUint32 aLanguageFilter)
 {
   mDone = PR_FALSE;
@@ -163,7 +165,7 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
             return NS_ERROR_OUT_OF_MEMORY;
         }
         if (nsnull == mCharSetProbers[1] &&
-            (mLanguageFilter & NS_FILTER_NON_CJK))
+            (mLanguageFilter & UC_FILTER_NON_CJK))
         {
           mCharSetProbers[1] = new nsSBCSGroupProber;
           if (nsnull == mCharSetProbers[1])

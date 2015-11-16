@@ -41,6 +41,8 @@
 #include "nsMBCSGroupProber.h"
 #include "nsUniversalDetector.h"
 
+#include "uchardet-filters.h"
+
 #if defined(DEBUG_chardet) || defined(DEBUG_jgmyers)
 const char *ProberName[] = 
 {
@@ -61,19 +63,19 @@ nsMBCSGroupProber::nsMBCSGroupProber(PRUint32 aLanguageFilter)
     mProbers[i] = nsnull;
 
   mProbers[0] = new nsUTF8Prober();
-  if (aLanguageFilter & NS_FILTER_JAPANESE) 
+  if (aLanguageFilter & UC_FILTER_JAPANESE)
   {
-    mProbers[1] = new nsSJISProber(aLanguageFilter == NS_FILTER_JAPANESE);
-    mProbers[2] = new nsEUCJPProber(aLanguageFilter == NS_FILTER_JAPANESE);
+    mProbers[1] = new nsSJISProber(aLanguageFilter == UC_FILTER_JAPANESE);
+    mProbers[2] = new nsEUCJPProber(aLanguageFilter == UC_FILTER_JAPANESE);
   }
-  if (aLanguageFilter & NS_FILTER_CHINESE_SIMPLIFIED)
-    mProbers[3] = new nsGB18030Prober(aLanguageFilter == NS_FILTER_CHINESE_SIMPLIFIED);
-  if (aLanguageFilter & NS_FILTER_KOREAN)
-    mProbers[4] = new nsEUCKRProber(aLanguageFilter == NS_FILTER_KOREAN);
-  if (aLanguageFilter & NS_FILTER_CHINESE_TRADITIONAL) 
+  if (aLanguageFilter & UC_FILTER_CHINESE_SIMPLIFIED)
+    mProbers[3] = new nsGB18030Prober(aLanguageFilter == UC_FILTER_CHINESE_SIMPLIFIED);
+  if (aLanguageFilter & UC_FILTER_KOREAN)
+    mProbers[4] = new nsEUCKRProber(aLanguageFilter == UC_FILTER_KOREAN);
+  if (aLanguageFilter & UC_FILTER_CHINESE_TRADITIONAL)
   {
-    mProbers[5] = new nsBig5Prober(aLanguageFilter == NS_FILTER_CHINESE_TRADITIONAL);
-    mProbers[6] = new nsEUCTWProber(aLanguageFilter == NS_FILTER_CHINESE_TRADITIONAL);
+    mProbers[5] = new nsBig5Prober(aLanguageFilter == UC_FILTER_CHINESE_TRADITIONAL);
+    mProbers[6] = new nsEUCTWProber(aLanguageFilter == UC_FILTER_CHINESE_TRADITIONAL);
   }
   Reset();
 }

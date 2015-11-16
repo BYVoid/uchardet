@@ -51,7 +51,7 @@ char buffer[BUFFER_SIZE];
 
 void detect(FILE * fp)
 {
-    uchardet_t handle = uchardet_new();
+    uchardet_t handle = uchardet_new(UC_FILTER_ALL);
 
     while (!feof(fp))
     {

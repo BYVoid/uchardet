@@ -42,14 +42,17 @@ extern "C" {
 #endif
 
 #include <stddef.h>
+#include "uchardet-filters.h"
 
 typedef struct uchardet * uchardet_t;
 
 /**
  * Create an encoding detector.
+ * @param langs [in] language filters. Use `UC_FILTER_ALL` to disable any
+ * hinting.
  * @return a handle of a instance of uchardet
  */
-uchardet_t uchardet_new(void);
+uchardet_t uchardet_new(const int langs);
 
 /**
  * Delete an encoding detector.
