@@ -94,7 +94,7 @@ SMModel const Big5SMModel = {
     5,
   {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, BIG5_st },
   Big5CharLenTable,
-  "Big5",
+  "BIG5",
 };
 
 static const PRUint32 EUCJP_cls [ 256 / 8 ] = {
@@ -257,10 +257,10 @@ const SMModel EUCTWSMModel = {
    7,
   {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, EUCTW_st },
   EUCTWCharLenTable,
-  "x-euc-tw",
+  "EUC-TW",
 };
 
-/* obsolete GB2312 by gb18030
+/* obsolete GB2312 by GB18030
 static PRUint32 GB2312_cls [ 256 / 8 ] = {
 //PCK4BITS(0,1,1,1,1,1,1,1),  // 00 - 07 
 PCK4BITS(1,1,1,1,1,1,1,1),  // 00 - 07 
@@ -430,7 +430,7 @@ const SMModel SJISSMModel = {
    6,
   {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, SJIS_st },
   SJISCharLenTable,
-  "Shift_JIS",
+  "SHIFT_JIS",
 };
 
 

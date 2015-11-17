@@ -44,13 +44,13 @@
 #if defined(DEBUG_chardet) || defined(DEBUG_jgmyers)
 const char *ProberName[] = 
 {
-  "UTF8",
+  "UTF-8",
   "SJIS",
-  "EUCJP",
+  "EUC-JP",
   "GB18030",
-  "EUCKR",
+  "EUC-KR",
   "Big5",
-  "EUCTW",
+  "EUC-TW",
 };
 
 #endif

@@ -128,7 +128,7 @@ public:
   EUCTWDistributionAnalysis();
 protected:
 
-  //for euc-TW encoding, we are interested 
+  //for EUC-TW encoding, we are interested
   //  first  byte range: 0xc4 -- 0xfe
   //  second byte range: 0xa1 -- 0xfe
   //no validation needed here. State machine has done that
