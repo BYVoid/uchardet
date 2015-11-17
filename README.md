@@ -40,6 +40,8 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
   * Hebrew
     * ISO-8859-8
     * WINDOWS-1255
+  * Thai
+    * TIS-620
   * Others
     * WINDOWS-1252
 
