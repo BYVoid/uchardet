@@ -315,7 +315,7 @@ const SequenceModel Win1251Model =
   RussianLangModel,
   (float)0.976601,
   PR_FALSE,
-  "windows-1251"
+  "WINDOWS-1251"
 };
 
 const SequenceModel Latin5Model = 
@@ -333,7 +333,7 @@ const SequenceModel MacCyrillicModel =
   RussianLangModel,
   (float)0.976601,
   PR_FALSE,
-  "x-mac-cyrillic"
+  "MAC-CYRILLIC"
 };
 
 const SequenceModel Ibm866Model = 

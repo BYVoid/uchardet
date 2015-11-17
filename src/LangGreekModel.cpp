@@ -240,5 +240,5 @@ const SequenceModel Win1253Model =
   GreekLangModel,
   (float)0.982851,
   PR_FALSE,
-  "windows-1253"
+  "WINDOWS-1253"
 };
