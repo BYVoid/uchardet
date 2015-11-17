@@ -91,6 +91,7 @@ See [uchardet.h](https://github.com/BYVoid/uchardet/blob/master/src/uchardet.h)
   * [nchardet](http://www.conceptdevelopment.net/Localization/NCharDet/) C# port of chardet
   * [uchardet-enhanced](https://bitbucket.org/medoc/uchardet-enhanced) A fork of mozilla universalchardet
   * [rust-uchardet](https://github.com/emk/rust-uchardet) Rust language binding of uchardet
+  * [libchardet](https://ftp.oops.org/pub/oops/libchardet/) Another C/C++ API wrapping Mozilla code.
 
 ## License
 
