@@ -59,6 +59,9 @@ set (DIR_SHARE_LOCALE ${DIR_SHARE}/locale)
 
 ######## Configuration
 
+option(BUILD_STATIC "Build static library"
+       ON)
+
 configure_file(
 	uchardet.pc.in
 	uchardet.pc

@@ -51,15 +51,16 @@ add_library(
 	${UCHARDET_SOURCES}
 )
 
-add_library(
-	${UCHARDET_STATIC_TARGET}
-	STATIC
-	${UCHARDET_SOURCES}
-)
+if (BUILD_STATIC)
+    add_library(
+            ${UCHARDET_STATIC_TARGET}
+            STATIC
+            ${UCHARDET_SOURCES}
+    )
+endif (BUILD_STATIC)
 
 set_target_properties(
 	${UCHARDET_TARGET}
-	${UCHARDET_STATIC_TARGET}
 	PROPERTIES
 		LINKER_LANGUAGE
 			CXX
@@ -70,6 +71,17 @@ set_target_properties(
 		SOVERSION
 			0
 )
+
+if (BUILD_STATIC)
+    set_target_properties(
+        ${UCHARDET_STATIC_TARGET}
+        PROPERTIES
+            LINKER_LANGUAGE
+                CXX
+            OUTPUT_NAME
+                uchardet
+    )
+endif (BUILD_STATIC)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
 	add_definitions(
@@ -96,12 +108,14 @@ install(
 )
 endif (NOT WIN32)
 
-install(
-	TARGETS
-		${UCHARDET_STATIC_TARGET}
-	ARCHIVE DESTINATION
-		${DIR_LIBRARY_STATIC}
-)
+if (BUILD_STATIC)
+    install(
+        TARGETS
+            ${UCHARDET_STATIC_TARGET}
+        ARCHIVE DESTINATION
+            ${DIR_LIBRARY_STATIC}
+    )
+endif (BUILD_STATIC)
 
 install(
 	FILES
