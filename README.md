@@ -85,7 +85,7 @@ See [uchardet.h](https://github.com/BYVoid/uchardet/blob/master/src/uchardet.h)
 
 ## Related Projects
 
-  * [python-chardet](http://chardet.feedparser.org/) Python port
+  * [python-chardet](https://github.com/chardet/chardet) Python port
   * [ruby-rchardet](http://rubyforge.org/projects/chardet/) Ruby port
   * [juniversalchardet](http://code.google.com/p/juniversalchardet/) Java port of universalchardet
   * [jchardet](http://jchardet.sourceforge.net/) Java port of chardet
