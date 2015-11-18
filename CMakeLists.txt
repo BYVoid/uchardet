@@ -1,7 +1,7 @@
 ######## Project settings
 cmake_minimum_required(VERSION 2.8)
 set (PACKAGE_NAME opencc)
-project (${PACKAGE_NAME} CXX)
+project (${PACKAGE_NAME} CXX C)
 enable_testing()
 
 ######## Package information
@@ -79,3 +79,4 @@ install(
 
 add_subdirectory(src)
 add_subdirectory(doc)
+add_subdirectory(test)
