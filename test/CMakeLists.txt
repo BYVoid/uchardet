@@ -30,7 +30,7 @@ foreach(dir ${dirs})
     # Iterate through all files.
     foreach(file ${files})
         get_filename_component(charset ${file} NAME_WE)
-        add_test(NAME "${lang}-${charset}"
+        add_test(NAME "${lang}:${charset}"
                  COMMAND uchardet-tests ${file})
     endforeach()
 endforeach()
