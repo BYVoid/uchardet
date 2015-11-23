@@ -47,9 +47,13 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
 
 ## Installation
 
-### Ubuntu/Debian
+### Debian/Ubuntu/Mint
 
     apt-get install uchardet libuchardet-dev
+
+### Mageia
+
+    urpmi libuchardet libuchardet-devel
 
 ### Mac
 
