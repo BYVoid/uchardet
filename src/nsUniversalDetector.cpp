@@ -106,7 +106,7 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
   if (aLen > 0)
     mGotData = PR_TRUE;
 
-  //If the data starts with BOM, we know it is UTF
+  /* If the data starts with BOM, we know it is UTF. */
   if (mStart)
   {
     mStart = PR_FALSE;
@@ -115,20 +115,42 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
         {
         case '\xEF':
           if (('\xBB' == aBuf[1]) && ('\xBF' == aBuf[2]))
-            // EF BB BF  UTF-8 encoded BOM
+            /* EF BB BF: UTF-8 encoded BOM. */
             mDetectedCharset = "UTF-8";
         break;
         case '\xFE':
           if ('\xFF' == aBuf[1])
-            // FE FF  UTF-16, big endian BOM
-            mDetectedCharset = "UTF-16";
+            /* FE FF: UTF-16, big endian BOM. */
+            mDetectedCharset = "UTF-16BE";
         break;
         case '\xFF':
           if ('\xFE' == aBuf[1])
-            // FF FE  UTF-16, little endian BOM
-            mDetectedCharset = "UTF-16";
-        break;
-      }  // switch
+          {
+            if (aLen > 3          &&
+                aBuf[2] == '\x00' &&
+                aBuf[3] == '\x00')
+            {
+                /* FF FE 00 00: UTF-32 (LE). */
+                mDetectedCharset = "UTF-32LE";
+            }
+            else
+            {
+                /* FF FE: UTF-16, little endian BOM. */
+                mDetectedCharset = "UTF-16LE";
+            }
+          }
+          break;
+        case '\x00':
+          if (aLen > 3           &&
+              aBuf[1] == '\x00' &&
+              aBuf[2] == '\xFE' &&
+              aBuf[3] == '\xFF')
+          {
+              /* 00 00 FE FF: UTF-32 (BE). */
+              mDetectedCharset = "UTF-32BE";
+          }
+          break;
+        }
 
       if (mDetectedCharset)
       {
@@ -140,10 +162,12 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
   PRUint32 i;
   for (i = 0; i < aLen; i++)
   {
-    //other than 0xa0, if every othe character is ascii, the page is ascii
-    if (aBuf[i] & '\x80' && aBuf[i] != '\xA0')  //Since many Ascii only page contains NBSP
+    /* Other than 0xA0, if every other character is ASCII, the page is ASCII.
+     * 0xA0 (NBSP in a few charset) is apparently a rare exception
+     * of non-ASCII character contained in ASCII text. */
+    if (aBuf[i] & '\x80' && aBuf[i] != '\xA0')
     {
-      //we got a non-ascii byte (high-byte)
+      /* We got a non-ASCII byte (high-byte) */
       if (mInputState != eHighbyte)
       {
         //adjust state
