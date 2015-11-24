@@ -46,6 +46,11 @@ nsProbingState nsSingleByteCharSetProber::HandleData(const char* aBuf, PRUint32 
   {
     order = mModel->charToOrderMap[(unsigned char)aBuf[i]];
 
+    if (order == 255)
+    {
+      mState = eNotMe;
+      break;
+    }
     if (order < SYMBOL_CAT_ORDER)
       mTotalChar++;
     if (order < SAMPLE_SIZE)
