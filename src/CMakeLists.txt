@@ -8,12 +8,12 @@ set(
 	UCHARDET_SOURCES
 	CharDistribution.cpp
 	JpCntx.cpp
-	LangBulgarianModel.cpp
-	LangCyrillicModel.cpp
-	LangGreekModel.cpp
-	LangHungarianModel.cpp
-	LangHebrewModel.cpp
-	LangThaiModel.cpp
+	LangModels/LangBulgarianModel.cpp
+	LangModels/LangCyrillicModel.cpp
+	LangModels/LangGreekModel.cpp
+	LangModels/LangHungarianModel.cpp
+	LangModels/LangHebrewModel.cpp
+	LangModels/LangThaiModel.cpp
 	nsHebrewProber.cpp
 	nsCharSetProber.cpp
 	nsBig5Prober.cpp

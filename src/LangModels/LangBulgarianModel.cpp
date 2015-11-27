@@ -35,7 +35,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#include "nsSBCharSetProber.h"
+#include "../nsSBCharSetProber.h"
 /****************************************************************
 CTR: Control characters that usually does not exist in any text
 RET: Carriage/Return

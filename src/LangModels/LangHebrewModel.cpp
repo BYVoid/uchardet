@@ -37,7 +37,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-#include "nsSBCharSetProber.h"
+#include "../nsSBCharSetProber.h"
 
 
 /****************************************************************
