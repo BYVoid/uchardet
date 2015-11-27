@@ -40,6 +40,19 @@
 
 #include "nsCharSetProber.h"
 
+/** Codepoints **/
+
+/* Illegal codepoints.*/
+#define ILL 255
+/* Control character. */
+#define CTR 254
+/* Symbols and punctuation that does not belong to words. */
+#define SYM 253
+/* Return/Line feeds. */
+#define RET 252
+/* Numbers 0-9. */
+#define NUM 251
+
 #define SAMPLE_SIZE 64
 #define SB_ENOUGH_REL_THRESHOLD  1024
 #define POSITIVE_SHORTCUT_THRESHOLD  (float)0.95
