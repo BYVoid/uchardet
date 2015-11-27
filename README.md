@@ -31,7 +31,7 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
     * ISO-8859-5
     * KOI8-R
     * WINDOWS-1251
-    * MACCYRILLIC
+    * MAC-CYRILLIC
     * IBM866
     * IBM855
   * Greek
