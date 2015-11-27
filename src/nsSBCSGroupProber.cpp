@@ -46,14 +46,14 @@
 
 nsSBCSGroupProber::nsSBCSGroupProber()
 {
-  mProbers[0] = new nsSingleByteCharSetProber(&Win1251Model);
-  mProbers[1] = new nsSingleByteCharSetProber(&Koi8rModel);
-  mProbers[2] = new nsSingleByteCharSetProber(&Latin5Model);
+  mProbers[0] = new nsSingleByteCharSetProber(&Win1251CyrillicModel);
+  mProbers[1] = new nsSingleByteCharSetProber(&Koi8rCyrillicModel);
+  mProbers[2] = new nsSingleByteCharSetProber(&Latin5CyrillicModel);
   mProbers[3] = new nsSingleByteCharSetProber(&MacCyrillicModel);
-  mProbers[4] = new nsSingleByteCharSetProber(&Ibm866Model);
-  mProbers[5] = new nsSingleByteCharSetProber(&Ibm855Model);
-  mProbers[6] = new nsSingleByteCharSetProber(&Latin7Model);
-  mProbers[7] = new nsSingleByteCharSetProber(&Win1253Model);
+  mProbers[4] = new nsSingleByteCharSetProber(&Ibm866CyrillicModel);
+  mProbers[5] = new nsSingleByteCharSetProber(&Ibm855CyrillicModel);
+  mProbers[6] = new nsSingleByteCharSetProber(&Latin7GreekModel);
+  mProbers[7] = new nsSingleByteCharSetProber(&Win1253GreekModel);
   mProbers[8] = new nsSingleByteCharSetProber(&Latin5BulgarianModel);
   mProbers[9] = new nsSingleByteCharSetProber(&Win1251BulgarianModel);
   mProbers[10] = new nsSingleByteCharSetProber(&TIS620ThaiModel);

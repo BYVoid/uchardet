@@ -225,7 +225,7 @@ static const PRUint8 GreekLangModel[] =
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 };
 
-const SequenceModel Latin7Model = 
+const SequenceModel Latin7GreekModel =
 {
   Latin7_CharToOrderMap,
   GreekLangModel,
@@ -234,7 +234,7 @@ const SequenceModel Latin7Model =
   "ISO-8859-7"
 };
 
-const SequenceModel Win1253Model = 
+const SequenceModel Win1253GreekModel =
 {
   win1253_CharToOrderMap,
   GreekLangModel,

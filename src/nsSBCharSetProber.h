@@ -119,14 +119,14 @@ protected:
 };
 
 
-extern const SequenceModel Koi8rModel;
-extern const SequenceModel Win1251Model;
-extern const SequenceModel Latin5Model;
+extern const SequenceModel Koi8rCyrillicModel;
+extern const SequenceModel Win1251CyrillicModel;
+extern const SequenceModel Latin5CyrillicModel;
 extern const SequenceModel MacCyrillicModel;
-extern const SequenceModel Ibm866Model;
-extern const SequenceModel Ibm855Model;
-extern const SequenceModel Latin7Model;
-extern const SequenceModel Win1253Model;
+extern const SequenceModel Ibm866CyrillicModel;
+extern const SequenceModel Ibm855CyrillicModel;
+extern const SequenceModel Latin7GreekModel;
+extern const SequenceModel Win1253GreekModel;
 extern const SequenceModel Latin5BulgarianModel;
 extern const SequenceModel Win1251BulgarianModel;
 extern const SequenceModel Latin2HungarianModel;
