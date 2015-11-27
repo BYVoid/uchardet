@@ -77,7 +77,7 @@ Author: BYVoid
 Bug Report: http://code.google.com/p/uchardet/issues/entry
 
 Usage:
- uchardet [Options] [File]
+ uchardet [Options] [File]...
 
 Options:
  -v, --version         Print version and build information.
