@@ -69,7 +69,7 @@ void detect(FILE * fp)
     if (*charset)
     	printf("%s\n", charset);
 	else
-		printf("ascii/unknown\n");
+		printf("unknown\n");
 	
     uchardet_delete(handle);
 }

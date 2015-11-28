@@ -229,6 +229,12 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
       mDone = PR_TRUE;
       mDetectedCharset = mEscCharSetProber->GetCharSetName();
     }
+    else
+    {
+      /* ASCII with the ESC character (or the sequence "~{") is still
+       * ASCII until proven otherwise. */
+      mDetectedCharset = "ASCII";
+    }
     break;
   case eHighbyte:
     for (i = 0; i < NUM_OF_CHARSET_PROBERS; i++)
@@ -246,8 +252,10 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
     }
     break;
 
-  default:  //pure ascii
-    ;//do nothing here
+  default:
+    /* Pure ASCII */
+    mDetectedCharset = "ASCII";
+    break;
   }
   return NS_OK;
 }
