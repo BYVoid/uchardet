@@ -10,7 +10,7 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
 
 ## Supported Encodings
 
-  * Unicode
+  * International (Unicode)
     * UTF-8
     * UTF-16BE / UTF-16LE
     * UTF-32BE / UTF-32LE / X-ISO-10646-UCS-4-34121 / X-ISO-10646-UCS-4-21431
