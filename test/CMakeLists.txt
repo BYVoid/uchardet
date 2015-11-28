@@ -37,7 +37,6 @@ foreach(dir ${dirs})
         if ("${lang}:${charset}" STREQUAL "hu:iso-8859-2"   OR
             "${lang}:${charset}" STREQUAL "el:windows-1253" OR
             "${lang}:${charset}" STREQUAL "ru:windows-1251" OR
-            "${lang}:${charset}" STREQUAL "fr:iso-8859-1"   OR
             "${lang}:${charset}" STREQUAL "he:iso-8859-8")
             message(STATUS "Skipping test ${lang}:${charset} (known broken)")
         else()

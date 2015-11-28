@@ -10,6 +10,7 @@ set(
 	JpCntx.cpp
 	LangModels/LangBulgarianModel.cpp
 	LangModels/LangCyrillicModel.cpp
+	LangModels/LangFrenchModel.cpp
 	LangModels/LangGreekModel.cpp
 	LangModels/LangHungarianModel.cpp
 	LangModels/LangHebrewModel.cpp
