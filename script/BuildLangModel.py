@@ -90,14 +90,15 @@ sys.path = sys_path_backup
 
 charsets = charsets.db.load(lang.charsets)
 
-if not hasattr(lang, 'start_page') or lang.start_page is None:
+if not hasattr(lang, 'start_pages') or lang.start_pages is None or \
+   lang.start_pages == []:
     # Let's start with the main page, assuming it should have links
     # to relevant pages. In locale wikipedia, this page is usually redirected
     # to a relevant page.
-    print("Warning: no `start_page` set for '{}'. Using 'Main_Page'.\n"
+    print("Warning: no `start_pages` set for '{}'. Using ['Main_Page'].\n"
           "         If you don't get good data, it is advised to set a "
-          "start_page` yourself.".format(lang.code))
-    lang.start_page = 'Main_Page'
+          "start_pages` variable yourself.".format(lang.code))
+    lang.start_pages = ['Main_Page']
 if not hasattr(lang, 'wikipedia_code') or lang.wikipedia_code is None:
     lang.wikipedia_code = lang.code
 if not hasattr(lang, 'clean_wikipedia_content') or lang.clean_wikipedia_content is None:
@@ -206,9 +207,10 @@ if options.max_page is not None:
     logfd.write('\n- Max number of pages: {}'.format(options.max_page))
 logfd.write('\n\n== Parsed pages ==\n')
 try:
-    visit_page(lang.start_page, 0,
-               lang.clean_wikipedia_content,
-               logfd)
+    for title in lang.start_pages:
+        visit_page(title, 0,
+                   lang.clean_wikipedia_content,
+                   logfd)
 except requests.exceptions.ConnectionError:
     print('Error: connection to Wikipedia failed. Aborting\n')
     exit(1)

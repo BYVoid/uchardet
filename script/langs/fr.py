@@ -55,7 +55,7 @@ charsets = ['ISO-8859-15', 'ISO-8859-1']
 ## Optional Properties ##
 
 # The start page. Though optional, it is advised to choose one yourself.
-start_page = 'Wikipédia:Accueil_principal'
+start_pages = ['Wikipédia:Accueil_principal', 'Bœuf_(animal)']
 # give possibility to select another code for the Wikipedia URL.
 wikipedia_code = code
 # 'a' and 'A' will be considered the same character, and so on.
