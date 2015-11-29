@@ -227,6 +227,7 @@ const SequenceModel Latin2HungarianModel =
 {
   Latin2_HungarianCharToOrderMap,
   HungarianLangModel,
+  64,
   (float)0.947368,
   PR_TRUE,
   "ISO-8859-2"
@@ -236,6 +237,7 @@ const SequenceModel Win1250HungarianModel =
 {
   win1250HungarianCharToOrderMap,
   HungarianLangModel,
+  64,
   (float)0.947368,
   PR_TRUE,
   "WINDOWS-1250"

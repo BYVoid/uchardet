@@ -229,6 +229,7 @@ const SequenceModel  Iso_8859_15FrenchModel =
 {
   Iso_8859_15_CharToOrderMap,
   FrenchLangModel,
+  64,
   (float)0.98,
   PR_TRUE,
   "ISO-8859-15"
@@ -238,6 +239,7 @@ const SequenceModel Iso_8859_1FrenchModel =
 {
   Iso_8859_1_CharToOrderMap,
   FrenchLangModel,
+  64,
   (float)0.99,
   PR_TRUE,
   "ISO-8859-1"

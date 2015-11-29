@@ -304,6 +304,7 @@ const SequenceModel Koi8rCyrillicModel =
 {
   KOI8R_CharToOrderMap,
   RussianLangModel,
+  64,
   (float)0.976601,
   PR_FALSE,
   "KOI8-R"
@@ -313,6 +314,7 @@ const SequenceModel Win1251CyrillicModel =
 {
   win1251_CharToOrderMap,
   RussianLangModel,
+  64,
   (float)0.976601,
   PR_FALSE,
   "WINDOWS-1251"
@@ -322,6 +324,7 @@ const SequenceModel Latin5CyrillicModel =
 {
   latin5_CharToOrderMap,
   RussianLangModel,
+  64,
   (float)0.976601,
   PR_FALSE,
   "ISO-8859-5"
@@ -331,6 +334,7 @@ const SequenceModel MacCyrillicModel =
 {
   macCyrillic_CharToOrderMap,
   RussianLangModel,
+  64,
   (float)0.976601,
   PR_FALSE,
   "MAC-CYRILLIC"
@@ -340,6 +344,7 @@ const SequenceModel Ibm866CyrillicModel =
 {
   IBM866_CharToOrderMap,
   RussianLangModel,
+  64,
   (float)0.976601,
   PR_FALSE,
   "IBM866"
@@ -349,6 +354,7 @@ const SequenceModel Ibm855CyrillicModel =
 {
   IBM855_CharToOrderMap,
   RussianLangModel,
+  64,
   (float)0.976601,
   PR_FALSE,
   "IBM855"

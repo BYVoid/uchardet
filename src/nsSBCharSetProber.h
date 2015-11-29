@@ -53,7 +53,6 @@
 /* Numbers 0-9. */
 #define NUM 251
 
-#define SAMPLE_SIZE 64
 #define SB_ENOUGH_REL_THRESHOLD  1024
 #define POSITIVE_SHORTCUT_THRESHOLD  (float)0.95
 #define NEGATIVE_SHORTCUT_THRESHOLD  (float)0.05
@@ -64,9 +63,13 @@
 
 typedef struct
 {
-  const unsigned char* const charToOrderMap;    // [256] table use to find a char's order
-  const PRUint8* const precedenceMatrix;  // [SAMPLE_SIZE][SAMPLE_SIZE]; table to find a 2-char sequence's frequency
-  float  mTypicalPositiveRatio;     // = freqSeqs / totalSeqs 
+  /* [256] table mapping codepoints to chararacter orders. */
+  const unsigned char* const charToOrderMap;
+  /* freqCharCount x freqCharCount table of 2-char sequence's frequencies. */
+  const PRUint8* const precedenceMatrix;
+  /* The count of frequent characters. */
+  int freqCharCount;
+  float  mTypicalPositiveRatio;     // = freqSeqs / totalSeqs
   PRBool keepEnglishLetter;         // says if this script contains English characters (not implemented)
   const char* const charsetName;
 } SequenceModel;
