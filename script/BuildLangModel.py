@@ -289,10 +289,9 @@ c_code += \
 /* Character Mapping Table:
  * ILL: illegal character.
  * CTR: control character specific to the charset.
- * NEU: control character common to all single byte charsets (neutral).
  * RET: carriage/return.
  * SYM: symbol (punctuation) that does not belong to word.
- * INT: 0 - 9.
+ * NUM: 0 - 9.
  *
  * Other characters are ordered by probabilities
  * (0 is the most common character in the language).
