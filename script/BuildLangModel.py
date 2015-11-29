@@ -107,6 +107,15 @@ if hasattr(lang, 'case_mapping'):
     lang.case_mapping = bool(lang.case_mapping)
 else:
     lang.case_mapping = False
+if not hasattr(lang, 'alphabet') or lang.alphabet is None:
+    lang.alphabet = None
+
+if lang.alphabet is not None:
+    if lang.use_ascii:
+        lang.alphabet += [chr(l) for l in range(65, 91)] + [chr(l) for l in range(97, 123)]
+    if lang.case_mapping:
+        lang.alphabet = list(set([ l.lower() for l in lang.alphabet ]))
+    lang.alphabet = list(set(lang.alphabet))
 
 # Starting processing.
 wikipedia.set_lang(lang.wikipedia_code)
@@ -233,17 +242,39 @@ for char in characters:
 
 sorted_ratios = sorted(ratios.items(), key=operator.itemgetter(1),
                        reverse=True)
-# Accumulated ratios of the first 64 chars.
+# Accumulated ratios of the frequent chars.
 accumulated_ratios = 0
 
-logfd.write('\nFirst {} characters:'.format(64 if n_char > 64 else n_char))
+# If there is no alphabet defined, we just use the first 64 letters, which was
+# the original default.
+# If there is an alphabet, we make sure all the alphabet characters are in the
+# frequent list, and we stop then. There may therefore be more or less than
+# 64 frequent characters depending on the language.
+if lang.alphabet is None:
+    freq_count = 64
+else:
+    freq_count = 0
+    for order, (char, ratio) in enumerate(sorted_ratios):
+        if len(lang.alphabet) == 0:
+            break
+        if chr(char) in lang.alphabet:
+            lang.alphabet.remove(chr(char))
+        freq_count += 1
+    else:
+        if len(lang.alphabet) > 0:
+            print("Error: alphabet characters are absent from data collection"
+                  "\n       Please check the configuration or the data."
+                  "\n       Missing characters: {}".format(", ".join(lang.alphabet)))
+            exit(1)
+
+logfd.write('\nFirst {} characters:'.format(freq_count))
 for order, (char, ratio) in enumerate(sorted_ratios):
-    logfd.write("\n[{:2}] Char {}: {} %".format(order, chr(char), ratio * 100))
-    if order > 63:
+    if order >= freq_count:
         break
+    logfd.write("\n[{:2}] Char {}: {} %".format(order, chr(char), ratio * 100))
     accumulated_ratios += ratio
 
-logfd.write("\n\nThe first 64 characters have an accumulated ratio of {}\n".format(accumulated_ratios))
+logfd.write("\n\nThe first {} characters have an accumulated ratio of {}.\n".format(freq_count, accumulated_ratios))
 
 with open(current_dir + '/header-template.cpp', 'r') as header_fd:
     c_code = header_fd.read()
@@ -352,11 +383,14 @@ c_code += "\n */\n"
 language_c = lang.name.replace('-', '_').title()
 LM_str = 'static const PRUint8 {}LangModel[]'.format(language_c)
 LM_str += ' =\n{'
-for line in range(0, 128):
+for line in range(0, freq_count):
     LM_str += '\n  '
-    for column in range(0, 32):
-        first_order = int(line/2)
-        second_order = 16 * (line % 2) + column
+    for column in range(0, freq_count):
+        # Let's not make too long lines.
+        if freq_count > 40 and column == int(freq_count / 2):
+            LM_str += '\n   '
+        first_order = int(line)
+        second_order = column
         if first_order < len(sorted_ratios) and second_order < len(sorted_ratios):
             (first_char, _) = sorted_ratios[first_order]
             (second_char, _) = sorted_ratios[second_order]
@@ -387,6 +421,7 @@ for charset in charsets:
     SM_str = '\n\nconst SequenceModel {}{}Model ='.format(charset_c, language_c)
     SM_str += '\n{\n  '
     SM_str += '{}_CharToOrderMap,\n  {}LangModel,'.format(charset_c, language_c)
+    SM_str += '\n  {},'.format(freq_count)
     SM_str += '\n  (float){},'.format(ratio_512)
     SM_str += '\n  {},'.format('PR_TRUE' if lang.use_ascii else 'PR_FALSE')
     SM_str += '\n  "{}"'.format(charset)

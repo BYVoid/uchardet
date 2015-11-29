@@ -54,6 +54,11 @@ charsets = ['ISO-8859-15', 'ISO-8859-1']
 
 ## Optional Properties ##
 
+# Alphabet characters.
+# If use_ascii=True, there is no need to add any ASCII characters.
+# If case_mapping=True, there is no need to add several cases of a same
+# character (provided Python algorithms know the right cases).
+alphabet = ['œ', 'à', 'â', 'ç', 'è', 'é', 'î', 'ï', 'ù', 'û', 'ê']
 # The start page. Though optional, it is advised to choose one yourself.
 start_pages = ['Wikipédia:Accueil_principal', 'Bœuf (animal)']
 # give possibility to select another code for the Wikipedia URL.
