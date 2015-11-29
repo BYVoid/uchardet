@@ -59,6 +59,9 @@ usage = 'Usage: gen-lang-data <LANG-CODE>\n' \
 
 description = "Internal tool for uchardet to generate language data."
 cmdline = optparse.OptionParser(usage, description = description)
+cmdline.add_option('--max-page',
+                   help = 'Maximum number of Wikipedia pages to parse (useful for debugging).',
+                   action = 'store', type = 'int', dest = 'max_page', default = None)
 (options, langs) = cmdline.parse_args()
 if len(langs) < 1:
     print("Please select at least one language code.\n")
@@ -119,6 +122,11 @@ def visit_page(title, depth, max_depth, clean_text, logfd):
     global characters
     global sequences
     global prev_char
+    global options
+
+    if options.max_page is not None and \
+       len(visited_pages) > options.max_page:
+       return
 
     visited_pages += [title]
     try:
