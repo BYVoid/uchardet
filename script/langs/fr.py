@@ -58,9 +58,6 @@ charsets = ['ISO-8859-15', 'ISO-8859-1']
 start_page = 'Wikipédia:Accueil_principal'
 # give possibility to select another code for the Wikipedia URL.
 wikipedia_code = code
-# Let's go 2 pages deep from the main_page.
-# Since a page has a lot of links, this is actually quite a lot of contents.
-max_depth = 2
 
 # A function to clean content returned by the `wikipedia` python lib,
 # in case some unwanted data has been overlooked.
