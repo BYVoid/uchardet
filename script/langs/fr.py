@@ -58,6 +58,10 @@ charsets = ['ISO-8859-15', 'ISO-8859-1']
 start_page = 'Wikipédia:Accueil_principal'
 # give possibility to select another code for the Wikipedia URL.
 wikipedia_code = code
+# 'a' and 'A' will be considered the same character, and so on.
+# This uses Python algorithm to determine upper/lower-case of a given
+# character.
+case_mapping = True
 
 # A function to clean content returned by the `wikipedia` python lib,
 # in case some unwanted data has been overlooked.

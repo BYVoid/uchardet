@@ -102,6 +102,10 @@ if not hasattr(lang, 'wikipedia_code') or lang.wikipedia_code is None:
     lang.wikipedia_code = lang.code
 if not hasattr(lang, 'clean_wikipedia_content') or lang.clean_wikipedia_content is None:
     lang.clean_wikipedia_content = None
+if hasattr(lang, 'case_mapping'):
+    lang.case_mapping = bool(lang.case_mapping)
+else:
+    lang.case_mapping = False
 
 # Starting processing.
 wikipedia.set_lang(lang.wikipedia_code)
@@ -125,6 +129,7 @@ def visit_page(title, depth, clean_text, logfd):
     global sequences
     global prev_char
     global options
+    global lang
 
     if options.max_page is not None and \
        len(visited_pages) > options.max_page:
@@ -144,6 +149,9 @@ def visit_page(title, depth, clean_text, logfd):
     # Clean multiple spaces. Newlines and such are normalized to spaces,
     # since they have basically a similar role in the purpose of uchardet.
     content = re.sub(r'\s+', ' ', content)
+
+    if lang.case_mapping:
+        content = content.lower()
 
     # In python 3, strings are UTF-8.
     # Looping through them return expected characters.
@@ -282,6 +290,8 @@ for charset in charsets:
                 CTOM_str += 'NUM,'
             else: # LET
                 uchar = bytes([cp]).decode(charset)
+                if lang.case_mapping and uchar.isupper():
+                    uchar = uchar.lower()
                 for order, (char, ratio) in enumerate(sorted_ratios):
                     if char == ord(uchar):
                         CTOM_str += '{:3},'.format(order)
