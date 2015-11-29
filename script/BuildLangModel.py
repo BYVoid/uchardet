@@ -382,7 +382,7 @@ c_code += LM_str
 
 for charset in charsets:
     charset_c = charset.replace('-', '_').title()
-    SM_str = '\n\nconst SequenceModel {}Model ='.format(charset_c)
+    SM_str = '\n\nconst SequenceModel {}{}Model ='.format(charset_c, language_c)
     SM_str += '\n{\n  '
     SM_str += '{}_CharToOrderMap,\n  {}LangModel,'.format(charset_c, language_c)
     SM_str += '\n  (float){},'.format(ratio_512)
