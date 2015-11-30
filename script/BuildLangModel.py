@@ -54,8 +54,8 @@ import charsets.db
 from charsets.codepoints import *
 
 # Command line processing.
-usage = 'Usage: gen-lang-data <LANG-CODE>\n' \
-        '\nEx: `gen-lang-data fr`'
+usage = 'Usage: {} <LANG-CODE>\n' \
+        '\nEx: `{} fr`'.format(__file__, __file__)
 
 description = "Internal tool for uchardet to generate language data."
 cmdline = optparse.OptionParser(usage, description = description)
@@ -132,35 +132,19 @@ characters = {}
 sequences = {}
 prev_char = None
 
-def visit_page(title, depth, clean_text, logfd):
+def process_text(text, clean_text, case_mapping):
     global charsets
-    global visited_pages
     global characters
     global sequences
     global prev_char
-    global options
-    global lang
-
-    if options.max_page is not None and \
-       len(visited_pages) > options.max_page:
-       return
-
-    visited_pages += [title]
-    try:
-        page = wikipedia.page(title)
-    except (wikipedia.exceptions.PageError,
-            wikipedia.exceptions.DisambiguationError):
-        # Let's just discard a page when I get an exception.
-        return
-    logfd.write("\n{} (revision {})".format(title, page.revision_id))
 
     if clean_text is not None:
-        content = clean_text(page.content)
+        content = clean_text(text)
     # Clean multiple spaces. Newlines and such are normalized to spaces,
     # since they have basically a similar role in the purpose of uchardet.
     content = re.sub(r'\s+', ' ', content)
 
-    if lang.case_mapping:
+    if case_mapping:
         content = content.lower()
 
     # In python 3, strings are UTF-8.
@@ -198,13 +182,38 @@ def visit_page(title, depth, clean_text, logfd):
         else:
             prev_char = None
 
-    if depth == options.max_depth:
+def visit_pages(titles, depth, lang, logfd):
+    global visited_pages
+    global options
+
+    if len(titles) == 0:
         return
 
-    for link in page.links:
-        if link in visited_pages:
+    next_titles = []
+    for title in titles:
+        if options.max_page is not None and \
+           len(visited_pages) > options.max_page:
+            return
+        if title in visited_pages:
             continue
-        visit_page (link, depth + 1, clean_text, logfd)
+        visited_pages += [title]
+        try:
+            page = wikipedia.page(title)
+        except (wikipedia.exceptions.PageError,
+                wikipedia.exceptions.DisambiguationError):
+            # Let's just discard a page when I get an exception.
+            continue
+        logfd.write("\n{} (revision {})".format(title, page.revision_id))
+
+        process_text(page.content,
+                     lang.clean_wikipedia_content,
+                     lang.case_mapping)
+        next_titles += page.links
+
+    if depth >= options.max_depth:
+        return
+
+    visit_pages (next_titles, depth + 1, lang, logfd)
 
 build_log = current_dir + '/BuildLangModelLogs/LangFrenchModel.log'
 logfd = open(build_log, 'w')
@@ -216,10 +225,7 @@ if options.max_page is not None:
     logfd.write('\n- Max number of pages: {}'.format(options.max_page))
 logfd.write('\n\n== Parsed pages ==\n')
 try:
-    for title in lang.start_pages:
-        visit_page(title, 0,
-                   lang.clean_wikipedia_content,
-                   logfd)
+    visit_pages(lang.start_pages, 0, lang, logfd)
 except requests.exceptions.ConnectionError:
     print('Error: connection to Wikipedia failed. Aborting\n')
     exit(1)
