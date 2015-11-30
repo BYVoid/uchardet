@@ -102,6 +102,15 @@ float nsSingleByteCharSetProber::GetConfidence(void)
 
   if (mTotalSeqs > 0) {
     r = ((float)1.0) * mSeqCounters[POSITIVE_CAT] / mTotalSeqs / mModel->mTypicalPositiveRatio;
+    /* Multiply by a ratio of positive sequences per characters.
+     * This would help in particular to distinguish close winners.
+     * Indeed if you add a letter, you'd expect the positive sequence count
+     * to increase as well. If it doesn't, it may mean that this new codepoint
+     * may not have been a letter, but instead a symbol (or some other
+     * character). This could make the difference between very closely related
+     * charsets used for the same language.
+     */
+    r = r*mSeqCounters[POSITIVE_CAT] / mTotalChar;
     r = r*mFreqChar/mTotalChar;
     if (r >= (float)1.00)
       r = (float)0.99;
