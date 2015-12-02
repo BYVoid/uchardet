@@ -34,8 +34,7 @@ foreach(dir ${dirs})
         # enough). We will have to take a closer look and fix these, but
         # there is no need to break the whole `make test` right now,
         # which may make actual regressions harder to notice.
-        if ("${lang}:${charset}" STREQUAL "hu:iso-8859-2"   OR
-            "${lang}:${charset}" STREQUAL "el:windows-1253" OR
+        if ("${lang}:${charset}" STREQUAL "el:windows-1253" OR
             "${lang}:${charset}" STREQUAL "ja:utf-16le"     OR
             "${lang}:${charset}" STREQUAL "ja:utf-16be"     OR
             "${lang}:${charset}" STREQUAL "he:iso-8859-8")
