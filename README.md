@@ -1,8 +1,8 @@
 # uchardet
 
-[uchardet](https://github.com/BYVoid/uchardet) is a C language binding of the original C++ implementation of the universal charset detection library by Mozilla.
+[uchardet](https://github.com/BYVoid/uchardet) is an encoding detector library, which takes a sequence of bytes in an unknown character encoding without any additional information, and attempts to determine the encoding of the text. Returned encoding names are [iconv](https://www.gnu.org/software/libiconv/)-compatible.
 
-uchardet is an encoding detector library, which takes a sequence of bytes in an unknown character encoding without any additional information, and attempts to determine the encoding of the text. Returned encoding names are iconv-compatible.
+uchardet started as a C language binding of the original C++ implementation of the universal charset detection library by Mozilla. It can now detect more charsets, and more reliably than the original implementation.
 
 The original code of universalchardet is available at http://lxr.mozilla.org/seamonkey/source/extensions/universalchardet/
 
