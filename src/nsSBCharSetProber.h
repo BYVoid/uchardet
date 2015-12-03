@@ -139,6 +139,8 @@ extern const SequenceModel TIS620ThaiModel;
 extern const SequenceModel Iso_8859_15FrenchModel;
 extern const SequenceModel Iso_8859_1FrenchModel;
 extern const SequenceModel Windows_1252FrenchModel;
+extern const SequenceModel Iso_8859_1GermanModel;
+extern const SequenceModel Windows_1252GermanModel;
 
 #endif /* nsSingleByteCharSetProber_h__ */
 
