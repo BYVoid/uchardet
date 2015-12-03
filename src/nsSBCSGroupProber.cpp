@@ -80,9 +80,10 @@ nsSBCSGroupProber::nsSBCSGroupProber()
 
   mProbers[14] = new nsSingleByteCharSetProber(&Iso_8859_1FrenchModel);
   mProbers[15] = new nsSingleByteCharSetProber(&Iso_8859_15FrenchModel);
+  mProbers[16] = new nsSingleByteCharSetProber(&Windows_1252FrenchModel);
 
-  mProbers[16] = new nsSingleByteCharSetProber(&Latin2HungarianModel);
-  mProbers[17] = new nsSingleByteCharSetProber(&Win1250HungarianModel);
+  mProbers[17] = new nsSingleByteCharSetProber(&Latin2HungarianModel);
+  mProbers[18] = new nsSingleByteCharSetProber(&Win1250HungarianModel);
 
   Reset();
 }
