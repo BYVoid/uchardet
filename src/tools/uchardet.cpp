@@ -81,7 +81,7 @@ void show_version()
     printf("Version %s\n", VERSION);
     printf("\n");
     printf("Authors: %s\n", "BYVoid, Jehan");
-    printf("Bug Report: %s\n", "http://code.google.com/p/uchardet/issues/entry");
+    printf("Bug Report: %s\n", "https://github.com/BYVoid/uchardet/issues");
     printf("\n");
 }
 

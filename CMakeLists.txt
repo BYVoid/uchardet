@@ -5,8 +5,8 @@ project (${PACKAGE_NAME} CXX C)
 enable_testing()
 
 ######## Package information
-set (PACKAGE_URL http://code.google.com/p/uchardet/)
-set (PACKAGE_BUGREPORT http://code.google.com/p/uchardet/issues/entry)
+set (PACKAGE_URL https://github.com/BYVoid/uchardet)
+set (PACKAGE_BUGREPORT https://github.com/BYVoid/uchardet/issues)
 set (UCHARDET_VERSION_MAJOR 0)
 set (UCHARDET_VERSION_MINOR 0)
 set (UCHARDET_VERSION_REVISION 3)

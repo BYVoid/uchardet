@@ -82,7 +82,7 @@ uchardet Command Line Tool
 Version 0.0.3
 
 Authors: BYVoid, Jehan
-Bug Report: http://code.google.com/p/uchardet/issues/entry
+Bug Report: https://github.com/BYVoid/uchardet/issues
 
 Usage:
  uchardet [Options] [File]...
