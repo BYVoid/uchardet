@@ -46,6 +46,9 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
     * ISO-8859-1
     * ISO-8859-15
     * WINDOWS-1252
+  * German
+    * ISO-8859-1
+    * WINDOWS-1252
   * English
     * ASCII
   * Hungarian:
