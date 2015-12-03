@@ -46,6 +46,13 @@ nsProbingState nsSingleByteCharSetProber::HandleData(const char* aBuf, PRUint32 
   {
     order = mModel->charToOrderMap[(unsigned char)aBuf[i]];
 
+    if (order == ILL)
+    {
+      /* When encountering an illegal codepoint, no need
+       * to continue analyzing data. */
+      mState = eNotMe;
+      break;
+    }
     if (order < SYMBOL_CAT_ORDER)
       mTotalChar++;
     if (order < mModel->freqCharCount)
