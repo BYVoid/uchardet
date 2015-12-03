@@ -79,7 +79,7 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
 
 ```
 uchardet Command Line Tool
-Version 0.0.3
+Version 0.0.4
 
 Authors: BYVoid, Jehan
 Bug Report: https://github.com/BYVoid/uchardet/issues

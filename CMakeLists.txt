@@ -9,7 +9,7 @@ set (PACKAGE_URL https://github.com/BYVoid/uchardet)
 set (PACKAGE_BUGREPORT https://github.com/BYVoid/uchardet/issues)
 set (UCHARDET_VERSION_MAJOR 0)
 set (UCHARDET_VERSION_MINOR 0)
-set (UCHARDET_VERSION_REVISION 3)
+set (UCHARDET_VERSION_REVISION 4)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
 	set (version_suffix .Debug)
