@@ -80,7 +80,7 @@ void show_version()
     printf("uchardet Command Line Tool\n");
     printf("Version %s\n", VERSION);
     printf("\n");
-    printf("Author: %s\n", "BYVoid");
+    printf("Authors: %s\n", "BYVoid, Jehan");
     printf("Bug Report: %s\n", "http://code.google.com/p/uchardet/issues/entry");
     printf("\n");
 }
