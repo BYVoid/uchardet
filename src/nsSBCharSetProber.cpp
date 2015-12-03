@@ -46,15 +46,21 @@ nsProbingState nsSingleByteCharSetProber::HandleData(const char* aBuf, PRUint32 
   {
     order = mModel->charToOrderMap[(unsigned char)aBuf[i]];
 
-    if (order == ILL)
+    if (order < SYMBOL_CAT_ORDER)
+    {
+      mTotalChar++;
+    }
+    else if (order == ILL)
     {
       /* When encountering an illegal codepoint, no need
        * to continue analyzing data. */
       mState = eNotMe;
       break;
     }
-    if (order < SYMBOL_CAT_ORDER)
-      mTotalChar++;
+    else if (order == CTR)
+    {
+      mCtrlChar++;
+    }
     if (order < mModel->freqCharCount)
     {
         mFreqChar++;
@@ -92,6 +98,7 @@ void  nsSingleByteCharSetProber::Reset(void)
     mSeqCounters[i] = 0;
   mTotalSeqs = 0;
   mTotalChar = 0;
+  mCtrlChar  = 0;
   mFreqChar = 0;
 }
 
@@ -118,6 +125,10 @@ float nsSingleByteCharSetProber::GetConfidence(void)
      * charsets used for the same language.
      */
     r = r*mSeqCounters[POSITIVE_CAT] / mTotalChar;
+    /* The more control characters (proportionnaly to the size of the text), the
+     * less confident we become in the current charset.
+     */
+    r = r * (mTotalChar - mCtrlChar) / mTotalChar;
     r = r*mFreqChar/mTotalChar;
     if (r >= (float)1.00)
       r = (float)0.99;

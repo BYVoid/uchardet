@@ -113,6 +113,7 @@ protected:
   PRUint32 mSeqCounters[NUMBER_OF_SEQ_CAT];
 
   PRUint32 mTotalChar;
+  PRUint32 mCtrlChar;
   //characters that fall in our sampling range
   PRUint32 mFreqChar;
   
