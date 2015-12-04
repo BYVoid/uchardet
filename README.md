@@ -14,6 +14,9 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
     * UTF-8
     * UTF-16BE / UTF-16LE
     * UTF-32BE / UTF-32LE / X-ISO-10646-UCS-4-34121 / X-ISO-10646-UCS-4-21431
+  * Bulgarian
+    * ISO-8859-5
+    * WINDOWS-1251
   * Chinese
     * ISO-2022-CN
     * BIG5
@@ -27,7 +30,7 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
   * Korean
     * ISO-2022-KR
     * EUC-KR
-  * Cyrillic
+  * Russian
     * ISO-8859-5
     * KOI8-R
     * WINDOWS-1251
