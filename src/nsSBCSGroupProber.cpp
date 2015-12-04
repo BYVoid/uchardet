@@ -46,12 +46,12 @@
 
 nsSBCSGroupProber::nsSBCSGroupProber()
 {
-  mProbers[0] = new nsSingleByteCharSetProber(&Win1251CyrillicModel);
-  mProbers[1] = new nsSingleByteCharSetProber(&Koi8rCyrillicModel);
-  mProbers[2] = new nsSingleByteCharSetProber(&Latin5CyrillicModel);
-  mProbers[3] = new nsSingleByteCharSetProber(&MacCyrillicModel);
-  mProbers[4] = new nsSingleByteCharSetProber(&Ibm866CyrillicModel);
-  mProbers[5] = new nsSingleByteCharSetProber(&Ibm855CyrillicModel);
+  mProbers[0] = new nsSingleByteCharSetProber(&Win1251RussianModel);
+  mProbers[1] = new nsSingleByteCharSetProber(&Koi8rRussianModel);
+  mProbers[2] = new nsSingleByteCharSetProber(&Latin5RussianModel);
+  mProbers[3] = new nsSingleByteCharSetProber(&MacCyrillicRussianModel);
+  mProbers[4] = new nsSingleByteCharSetProber(&Ibm866RussianModel);
+  mProbers[5] = new nsSingleByteCharSetProber(&Ibm855RussianModel);
 
   mProbers[6] = new nsSingleByteCharSetProber(&Latin7GreekModel);
   mProbers[7] = new nsSingleByteCharSetProber(&Win1253GreekModel);

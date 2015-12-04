@@ -123,12 +123,12 @@ protected:
 };
 
 
-extern const SequenceModel Koi8rCyrillicModel;
-extern const SequenceModel Win1251CyrillicModel;
-extern const SequenceModel Latin5CyrillicModel;
-extern const SequenceModel MacCyrillicModel;
-extern const SequenceModel Ibm866CyrillicModel;
-extern const SequenceModel Ibm855CyrillicModel;
+extern const SequenceModel Koi8rRussianModel;
+extern const SequenceModel Win1251RussianModel;
+extern const SequenceModel Latin5RussianModel;
+extern const SequenceModel MacCyrillicRussianModel;
+extern const SequenceModel Ibm866RussianModel;
+extern const SequenceModel Ibm855RussianModel;
 
 extern const SequenceModel Latin7GreekModel;
 extern const SequenceModel Win1253GreekModel;
