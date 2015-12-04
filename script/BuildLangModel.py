@@ -39,6 +39,7 @@
 # ##### END LICENSE BLOCK #####
 
 # Third party modules.
+import unicodedata
 import wikipedia
 import importlib
 import optparse
@@ -114,7 +115,7 @@ if lang.alphabet is not None:
     if lang.use_ascii:
         lang.alphabet += [chr(l) for l in range(65, 91)] + [chr(l) for l in range(97, 123)]
     if lang.case_mapping:
-        lang.alphabet = list(set([ l.lower() for l in lang.alphabet ]))
+        lang.alphabet = list(set([ l.lower() if len(unicodedata.normalize('NFC', l.lower())) == 1 else l for l in lang.alphabet ]))
     lang.alphabet = list(set(lang.alphabet))
 
 # Starting processing.
@@ -333,7 +334,10 @@ for charset in charsets:
                 CTOM_str += 'NUM,'
             else: # LET
                 uchar = bytes([cp]).decode(charset)
-                if lang.case_mapping and uchar.isupper():
+                if lang.case_mapping and uchar.isupper() and \
+                   len(unicodedata.normalize('NFC', uchar.lower())) == 1:
+                   # Unless we encounter special cases of characters with no
+                   # composed lowercase, we lowercase it.
                     uchar = uchar.lower()
                 for order, (char, ratio) in enumerate(sorted_ratios):
                     if char == ord(uchar):
