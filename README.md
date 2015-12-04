@@ -56,6 +56,9 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
   * Hungarian:
     * ISO-8859-2
     * WINDOWS-1250
+  * Turkish:
+    * ISO-8859-3
+    * ISO-8859-9
   * Others
     * WINDOWS-1252
 

@@ -90,6 +90,8 @@ nsSBCSGroupProber::nsSBCSGroupProber()
 
   mProbers[21] = new nsSingleByteCharSetProber(&Iso_8859_3EsperantoModel);
 
+  mProbers[22] = new nsSingleByteCharSetProber(&Iso_8859_3TurkishModel);
+  mProbers[23] = new nsSingleByteCharSetProber(&Iso_8859_9TurkishModel);
   Reset();
 }
 

@@ -17,6 +17,7 @@ set(
 	LangModels/LangHungarianModel.cpp
 	LangModels/LangHebrewModel.cpp
 	LangModels/LangThaiModel.cpp
+	LangModels/LangTurkishModel.cpp
 	nsHebrewProber.cpp
 	nsCharSetProber.cpp
 	nsBig5Prober.cpp

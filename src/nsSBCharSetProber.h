@@ -152,5 +152,8 @@ extern const SequenceModel Windows_1252GermanModel;
 
 extern const SequenceModel Iso_8859_3EsperantoModel;
 
+extern const SequenceModel Iso_8859_3TurkishModel;
+extern const SequenceModel Iso_8859_9TurkishModel;
+
 #endif /* nsSingleByteCharSetProber_h__ */
 
