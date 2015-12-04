@@ -108,14 +108,42 @@ if hasattr(lang, 'case_mapping'):
     lang.case_mapping = bool(lang.case_mapping)
 else:
     lang.case_mapping = False
+if not hasattr(lang, 'custom_case_mapping'):
+    lang.custom_case_mapping = None
 if not hasattr(lang, 'alphabet') or lang.alphabet is None:
     lang.alphabet = None
+
+def local_lowercase(text, lang):
+    lowercased = ''
+    for l in text:
+        if lang.custom_case_mapping is not None and \
+           l in lang.custom_case_mapping:
+            lowercased += lang.custom_case_mapping[l]
+        elif l.isupper() and \
+             lang.case_mapping and \
+             len(unicodedata.normalize('NFC', l.lower())) == 1:
+            lowercased += l.lower()
+        else:
+            lowercased += l
+    return lowercased
 
 if lang.alphabet is not None:
     if lang.use_ascii:
         lang.alphabet += [chr(l) for l in range(65, 91)] + [chr(l) for l in range(97, 123)]
-    if lang.case_mapping:
-        lang.alphabet = list(set([ l.lower() if len(unicodedata.normalize('NFC', l.lower())) == 1 else l for l in lang.alphabet ]))
+    if lang.case_mapping or lang.custom_case_mapping is not None:
+        lang.alphabet = [local_lowercase(l, lang) for l in lang.alphabet]
+        #alphabet = []
+        #for l in lang.alphabet:
+            #if l.isupper() and \
+               #lang.custom_case_mapping is not None and \
+               #l in lang.custom_case_mapping:
+                #alphabet.append(lang.custom_case_mapping[l])
+            #elif l.isupper() and \
+                 #lang.case_mapping and \
+                 #len(unicodedata.normalize('NFC', l.lower())) == 1:
+                #alphabet.append(l.lower())
+            #else:
+                #alphabet.append(l)
     lang.alphabet = list(set(lang.alphabet))
 
 # Starting processing.
@@ -133,20 +161,20 @@ characters = {}
 sequences = {}
 prev_char = None
 
-def process_text(text, clean_text, case_mapping):
+def process_text(text, lang):
     global charsets
     global characters
     global sequences
     global prev_char
 
-    if clean_text is not None:
-        content = clean_text(text)
+    if lang.clean_wikipedia_content is not None:
+        content = lang.clean_wikipedia_content(text)
     # Clean multiple spaces. Newlines and such are normalized to spaces,
     # since they have basically a similar role in the purpose of uchardet.
     content = re.sub(r'\s+', ' ', content)
 
-    if case_mapping:
-        content = content.lower()
+    if lang.case_mapping or lang.custom_case_mapping is not None:
+        content = local_lowercase(content, lang)
 
     # In python 3, strings are UTF-8.
     # Looping through them return expected characters.
@@ -206,9 +234,7 @@ def visit_pages(titles, depth, lang, logfd):
             continue
         logfd.write("\n{} (revision {})".format(title, page.revision_id))
 
-        process_text(page.content,
-                     lang.clean_wikipedia_content,
-                     lang.case_mapping)
+        process_text(page.content, lang)
         next_titles += page.links
 
     if depth >= options.max_depth:
@@ -334,11 +360,12 @@ for charset in charsets:
                 CTOM_str += 'NUM,'
             else: # LET
                 uchar = bytes([cp]).decode(charset)
-                if lang.case_mapping and uchar.isupper() and \
-                   len(unicodedata.normalize('NFC', uchar.lower())) == 1:
+                #if lang.case_mapping and uchar.isupper() and \
+                   #len(unicodedata.normalize('NFC', uchar.lower())) == 1:
                    # Unless we encounter special cases of characters with no
                    # composed lowercase, we lowercase it.
-                    uchar = uchar.lower()
+                if lang.case_mapping or lang.custom_case_mapping is not None:
+                    uchar = local_lowercase(uchar, lang)
                 for order, (char, ratio) in enumerate(sorted_ratios):
                     if char == ord(uchar):
                         CTOM_str += '{:3},'.format(order)
