@@ -8,7 +8,7 @@ The original code of universalchardet is available at http://lxr.mozilla.org/sea
 
 Techniques used by universalchardet are described at http://www.mozilla.org/projects/intl/UniversalCharsetDetection.html
 
-## Supported Encodings
+## Supported Languages/Encodings
 
   * International (Unicode)
     * UTF-8
@@ -23,6 +23,26 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
     * EUC-TW
     * GB18030
     * HZ-GB-2312
+  * English
+    * ASCII
+  * Esperanto
+    * ISO-8859-3
+  * French
+    * ISO-8859-1
+    * ISO-8859-15
+    * WINDOWS-1252
+  * German
+    * ISO-8859-1
+    * WINDOWS-1252
+  * Greek
+    * ISO-8859-7
+    * WINDOWS-1253
+  * Hebrew
+    * ISO-8859-8
+    * WINDOWS-1255
+  * Hungarian:
+    * ISO-8859-2
+    * WINDOWS-1250
   * Japanese
     * ISO-2022-JP
     * SHIFT_JIS
@@ -37,29 +57,9 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
     * MAC-CYRILLIC
     * IBM866
     * IBM855
-  * Greek
-    * ISO-8859-7
-    * WINDOWS-1253
-  * Hebrew
-    * ISO-8859-8
-    * WINDOWS-1255
   * Thai
     * TIS-620
     * ISO-8859-11
-  * Esperanto
-    * ISO-8859-3
-  * French
-    * ISO-8859-1
-    * ISO-8859-15
-    * WINDOWS-1252
-  * German
-    * ISO-8859-1
-    * WINDOWS-1252
-  * English
-    * ASCII
-  * Hungarian:
-    * ISO-8859-2
-    * WINDOWS-1250
   * Turkish:
     * ISO-8859-3
     * ISO-8859-9
