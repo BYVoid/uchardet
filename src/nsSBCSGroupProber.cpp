@@ -88,6 +88,8 @@ nsSBCSGroupProber::nsSBCSGroupProber()
   mProbers[19] = new nsSingleByteCharSetProber(&Iso_8859_1GermanModel);
   mProbers[20] = new nsSingleByteCharSetProber(&Windows_1252GermanModel);
 
+  mProbers[21] = new nsSingleByteCharSetProber(&Iso_8859_3EsperantoModel);
+
   Reset();
 }
 

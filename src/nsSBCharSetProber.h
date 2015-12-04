@@ -129,19 +129,28 @@ extern const SequenceModel Latin5CyrillicModel;
 extern const SequenceModel MacCyrillicModel;
 extern const SequenceModel Ibm866CyrillicModel;
 extern const SequenceModel Ibm855CyrillicModel;
+
 extern const SequenceModel Latin7GreekModel;
 extern const SequenceModel Win1253GreekModel;
+
 extern const SequenceModel Latin5BulgarianModel;
 extern const SequenceModel Win1251BulgarianModel;
+
 extern const SequenceModel Latin2HungarianModel;
 extern const SequenceModel Win1250HungarianModel;
+
 extern const SequenceModel Win1255Model;
+
 extern const SequenceModel TIS620ThaiModel;
+
 extern const SequenceModel Iso_8859_15FrenchModel;
 extern const SequenceModel Iso_8859_1FrenchModel;
 extern const SequenceModel Windows_1252FrenchModel;
+
 extern const SequenceModel Iso_8859_1GermanModel;
 extern const SequenceModel Windows_1252GermanModel;
+
+extern const SequenceModel Iso_8859_3EsperantoModel;
 
 #endif /* nsSingleByteCharSetProber_h__ */
 
