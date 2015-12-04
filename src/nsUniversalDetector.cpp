@@ -121,7 +121,7 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
         case '\xFE':
           if ('\xFF' == aBuf[1])
             /* FE FF: UTF-16, big endian BOM. */
-            mDetectedCharset = "UTF-16BE";
+            mDetectedCharset = "UTF-16";
         break;
         case '\xFF':
           if ('\xFE' == aBuf[1])
@@ -131,12 +131,12 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
                 aBuf[3] == '\x00')
             {
                 /* FF FE 00 00: UTF-32 (LE). */
-                mDetectedCharset = "UTF-32LE";
+                mDetectedCharset = "UTF-32";
             }
             else
             {
                 /* FF FE: UTF-16, little endian BOM. */
-                mDetectedCharset = "UTF-16LE";
+                mDetectedCharset = "UTF-16";
             }
           }
           break;
@@ -147,7 +147,7 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
               aBuf[3] == '\xFF')
           {
               /* 00 00 FE FF: UTF-32 (BE). */
-              mDetectedCharset = "UTF-32BE";
+              mDetectedCharset = "UTF-32";
           }
           break;
         }
