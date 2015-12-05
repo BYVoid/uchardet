@@ -47,6 +47,7 @@
 
 nsUniversalDetector::nsUniversalDetector(PRUint32 aLanguageFilter)
 {
+  mNbspFound = PR_FALSE;
   mDone = PR_FALSE;
   mBestGuess = -1;   //illegal value as signal
   mInTag = PR_FALSE;
@@ -75,6 +76,7 @@ nsUniversalDetector::~nsUniversalDetector()
 void
 nsUniversalDetector::Reset()
 {
+  mNbspFound = PR_FALSE;
   mDone = PR_FALSE;
   mBestGuess = -1;   //illegal value as signal
   mInTag = PR_FALSE;
@@ -162,9 +164,10 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
   PRUint32 i;
   for (i = 0; i < aLen; i++)
   {
-    /* Other than 0xA0, if every other character is ASCII, the page is ASCII.
+    /* If every other character is ASCII or 0xA0, we don't run charset
+     * probers.
      * 0xA0 (NBSP in a few charset) is apparently a rare exception
-     * of non-ASCII character contained in ASCII text. */
+     * of non-ASCII character often contained in nearly-ASCII text. */
     if (aBuf[i] & '\x80' && aBuf[i] != '\xA0')
     {
       /* We got a non-ASCII byte (high-byte) */
@@ -203,11 +206,19 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
     }
     else
     {
-      //ok, just pure ascii so far
-      if ( ePureAscii == mInputState &&
-        (aBuf[i] == '\033' || (aBuf[i] == '{' && mLastChar == '~')) )
+      /* Just pure ASCII or NBSP so far. */
+      if (aBuf[i] == '\xA0')
       {
-        //found escape character or HZ "~{"
+        /* ASCII with the only exception of NBSP seems quite common.
+         * I doubt it is really necessary to train a model here, so let's
+         * just make an exception.
+         */
+          mNbspFound = PR_TRUE;
+      }
+      else if (mInputState == ePureAscii &&
+               (aBuf[i] == '\033' || (aBuf[i] == '{' && mLastChar == '~')))
+      {
+        /* We found an escape character or HZ "~{". */
         mInputState = eEscAscii;
       }
       mLastChar = aBuf[i];
@@ -228,6 +239,10 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
     {
       mDone = PR_TRUE;
       mDetectedCharset = mEscCharSetProber->GetCharSetName();
+    }
+    else if (mNbspFound)
+    {
+      mDetectedCharset = "ISO-8859-1";
     }
     else
     {
@@ -253,8 +268,17 @@ nsresult nsUniversalDetector::HandleData(const char* aBuf, PRUint32 aLen)
     break;
 
   default:
-    /* Pure ASCII */
-    mDetectedCharset = "ASCII";
+    if (mNbspFound)
+    {
+      /* ISO-8859-1 is a good result candidate for ASCII + NBSP.
+       * (though it could have been any ISO-8859 encoding). */
+      mDetectedCharset = "ISO-8859-1";
+    }
+    else
+    {
+      /* Pure ASCII */
+      mDetectedCharset = "ASCII";
+    }
     break;
   }
   return NS_OK;
