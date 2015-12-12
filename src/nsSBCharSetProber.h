@@ -136,8 +136,8 @@ extern const SequenceModel Win1253GreekModel;
 extern const SequenceModel Latin5BulgarianModel;
 extern const SequenceModel Win1251BulgarianModel;
 
-extern const SequenceModel Latin2HungarianModel;
-extern const SequenceModel Win1250HungarianModel;
+extern const SequenceModel Iso_8859_2HungarianModel;
+extern const SequenceModel Windows_1250HungarianModel;
 
 extern const SequenceModel Win1255Model;
 
