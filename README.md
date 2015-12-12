@@ -57,6 +57,10 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
     * MAC-CYRILLIC
     * IBM866
     * IBM855
+  * Spanish
+    * ISO-8859-1
+    * ISO-8859-15
+    * WINDOWS-1252
   * Thai
     * TIS-620
     * ISO-8859-11

@@ -148,6 +148,10 @@ extern const SequenceModel Iso_8859_15FrenchModel;
 extern const SequenceModel Iso_8859_1FrenchModel;
 extern const SequenceModel Windows_1252FrenchModel;
 
+extern const SequenceModel Iso_8859_15SpanishModel;
+extern const SequenceModel Iso_8859_1SpanishModel;
+extern const SequenceModel Windows_1252SpanishModel;
+
 extern const SequenceModel Iso_8859_1GermanModel;
 extern const SequenceModel Windows_1252GermanModel;
 

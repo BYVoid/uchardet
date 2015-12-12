@@ -86,16 +86,20 @@ nsSBCSGroupProber::nsSBCSGroupProber()
   mProbers[16] = new nsSingleByteCharSetProber(&Iso_8859_15FrenchModel);
   mProbers[17] = new nsSingleByteCharSetProber(&Windows_1252FrenchModel);
 
-  mProbers[18] = new nsSingleByteCharSetProber(&Iso_8859_2HungarianModel);
-  mProbers[19] = new nsSingleByteCharSetProber(&Windows_1250HungarianModel);
+  mProbers[18] = new nsSingleByteCharSetProber(&Iso_8859_1SpanishModel);
+  mProbers[19] = new nsSingleByteCharSetProber(&Iso_8859_15SpanishModel);
+  mProbers[20] = new nsSingleByteCharSetProber(&Windows_1252SpanishModel);
 
-  mProbers[20] = new nsSingleByteCharSetProber(&Iso_8859_1GermanModel);
-  mProbers[21] = new nsSingleByteCharSetProber(&Windows_1252GermanModel);
+  mProbers[21] = new nsSingleByteCharSetProber(&Iso_8859_2HungarianModel);
+  mProbers[22] = new nsSingleByteCharSetProber(&Windows_1250HungarianModel);
 
-  mProbers[22] = new nsSingleByteCharSetProber(&Iso_8859_3EsperantoModel);
+  mProbers[23] = new nsSingleByteCharSetProber(&Iso_8859_1GermanModel);
+  mProbers[24] = new nsSingleByteCharSetProber(&Windows_1252GermanModel);
 
-  mProbers[23] = new nsSingleByteCharSetProber(&Iso_8859_3TurkishModel);
-  mProbers[24] = new nsSingleByteCharSetProber(&Iso_8859_9TurkishModel);
+  mProbers[25] = new nsSingleByteCharSetProber(&Iso_8859_3EsperantoModel);
+
+  mProbers[26] = new nsSingleByteCharSetProber(&Iso_8859_3TurkishModel);
+  mProbers[27] = new nsSingleByteCharSetProber(&Iso_8859_9TurkishModel);
 
   Reset();
 }
