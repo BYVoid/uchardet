@@ -128,6 +128,8 @@ def local_lowercase(text, lang):
     return lowercased
 
 if lang.alphabet is not None:
+    # Allowing to provide an alphabet in string format rather than list.
+    lang.alphabet = list(lang.alphabet)
     if lang.use_ascii:
         lang.alphabet += [chr(l) for l in range(65, 91)] + [chr(l) for l in range(97, 123)]
     if lang.case_mapping or lang.custom_case_mapping is not None:
