@@ -359,7 +359,12 @@ for charset in charsets:
             elif cp_type == NUM:
                 CTOM_str += 'NUM,'
             else: # LET
-                uchar = bytes([cp]).decode(charset)
+                try:
+                    uchar = bytes([cp]).decode(charset)
+                except UnicodeDecodeError:
+                    print('Unknown character 0X{:X} in {}.'.format(cp, charset))
+                    print('Please verify your charset specification.\n')
+                    exit(1)
                 #if lang.case_mapping and uchar.isupper() and \
                    #len(unicodedata.normalize('NFC', uchar.lower())) == 1:
                    # Unless we encounter special cases of characters with no
