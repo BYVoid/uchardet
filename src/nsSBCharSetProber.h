@@ -130,8 +130,8 @@ extern const SequenceModel MacCyrillicRussianModel;
 extern const SequenceModel Ibm866RussianModel;
 extern const SequenceModel Ibm855RussianModel;
 
-extern const SequenceModel Latin7GreekModel;
-extern const SequenceModel Win1253GreekModel;
+extern const SequenceModel Iso_8859_7GreekModel;
+extern const SequenceModel Windows_1253GreekModel;
 
 extern const SequenceModel Latin5BulgarianModel;
 extern const SequenceModel Win1251BulgarianModel;
