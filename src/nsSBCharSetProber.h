@@ -122,6 +122,8 @@ protected:
 
 };
 
+extern const SequenceModel Windows_1256ArabicModel;
+extern const SequenceModel Iso_8859_6ArabicModel;
 
 extern const SequenceModel Koi8rRussianModel;
 extern const SequenceModel Win1251RussianModel;

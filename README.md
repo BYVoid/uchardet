@@ -14,6 +14,9 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
     * UTF-8
     * UTF-16BE / UTF-16LE
     * UTF-32BE / UTF-32LE / X-ISO-10646-UCS-4-34121 / X-ISO-10646-UCS-4-21431
+  * Arabic
+    * ISO-8859-6
+    * WINDOWS-1256
   * Bulgarian
     * ISO-8859-5
     * WINDOWS-1251

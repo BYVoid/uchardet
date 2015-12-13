@@ -8,6 +8,7 @@ set(
 	UCHARDET_SOURCES
 	CharDistribution.cpp
 	JpCntx.cpp
+	LangModels/LangArabicModel.cpp
 	LangModels/LangBulgarianModel.cpp
 	LangModels/LangRussianModel.cpp
 	LangModels/LangEsperantoModel.cpp
