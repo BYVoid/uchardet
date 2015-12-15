@@ -1,6 +1,6 @@
 ######## Project settings
 cmake_minimum_required(VERSION 2.8)
-set (PACKAGE_NAME opencc)
+set (PACKAGE_NAME uchardet)
 project (${PACKAGE_NAME} CXX C)
 enable_testing()
 
@@ -54,7 +54,7 @@ if (DEFINED SYSCONF_INSTALL_DIR)
 	set (DIR_ETC ${SYSCONF_INSTALL_DIR})
 endif (DEFINED SYSCONF_INSTALL_DIR)
 
-set (DIR_SHARE_UCHARDET ${DIR_SHARE}/opencc)
+set (DIR_SHARE_UCHARDET ${DIR_SHARE}/uchardet)
 set (DIR_SHARE_LOCALE ${DIR_SHARE}/locale)
 
 ######## Configuration
