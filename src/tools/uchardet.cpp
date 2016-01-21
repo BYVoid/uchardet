@@ -60,7 +60,7 @@ void detect(FILE * fp)
         if (retval != 0)
         {
             fprintf(stderr, "Handle data error.\n");
-            exit(0);
+            exit(1);
         }
     }
     uchardet_data_end(handle);
