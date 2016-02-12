@@ -83,6 +83,10 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
 
     urpmi libuchardet libuchardet-devel
 
+### Fedora
+
+    dnf install uchardet uchardet-devel
+
 ### Mac
 
     brew install uchardet
