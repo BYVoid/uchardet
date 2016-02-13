@@ -40,6 +40,7 @@
 
 # Third party modules.
 import unicodedata
+import subprocess
 import wikipedia
 import importlib
 import optparse
@@ -190,7 +191,22 @@ def process_text(text, lang):
             # language encodings and its not a special character.
             for charset in charsets:
                 # Does the character exist in the charset?
-                codepoint = char.encode(charset, 'ignore')
+                try:
+                    codepoint = char.encode(charset, 'ignore')
+                except LookupError:
+                    # unknown encoding. Use iconv from command line instead.
+                    try:
+                        call = subprocess.Popen(['iconv', '-f', 'UTF-8', '-t', charset],
+                                                stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                                stderr=subprocess.DEVNULL)
+                        if call.poll() is not None:
+                            (_, error) = call.communicate(input='')
+                            print('Error: `iconv` ended with error "{}".\n'.format(error))
+                            exit(1)
+                        (codepoint, _) = call.communicate(input=char.encode('UTF-8'))
+                    except FileNotFoundError:
+                        print('Error: "{}" is not a supported charset by python and `iconv` is not installed.\n')
+                        exit(1)
 
                 if codepoint == b'':
                     continue
@@ -368,6 +384,22 @@ for charset in charsets:
                     print('Unknown character 0X{:X} in {}.'.format(cp, charset))
                     print('Please verify your charset specification.\n')
                     exit(1)
+                except LookupError:
+                    # Unknown encoding. Use iconv instead.
+                    try:
+                        call = subprocess.Popen(['iconv', '-t', 'UTF-8', '-f', charset],
+                                                stdin=subprocess.PIPE,
+                                                stdout=subprocess.PIPE,
+                                                stderr=subprocess.PIPE)
+                        if call.poll() is not None:
+                            (_, error) = call.communicate(input='')
+                            print('Error: `iconv` ended with error "{}".\n'.format(error))
+                            exit(1)
+                        (uchar, _) = call.communicate(input=bytes([cp]))
+                        uchar = uchar.decode('UTF-8')
+                    except FileNotFoundError:
+                        print('Error: "{}" is not a supported charset by python and `iconv` is not installed.\n')
+                        exit(1)
                 #if lang.case_mapping and uchar.isupper() and \
                    #len(unicodedata.normalize('NFC', uchar.lower())) == 1:
                    # Unless we encounter special cases of characters with no
