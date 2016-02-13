@@ -70,6 +70,8 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
   * Turkish:
     * ISO-8859-3
     * ISO-8859-9
+  * Vietnamese:
+    * Windows-1258
   * Others
     * WINDOWS-1252
 
