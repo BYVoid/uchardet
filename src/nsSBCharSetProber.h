@@ -162,6 +162,7 @@ extern const SequenceModel Iso_8859_3EsperantoModel;
 extern const SequenceModel Iso_8859_3TurkishModel;
 extern const SequenceModel Iso_8859_9TurkishModel;
 
+extern const SequenceModel VisciiVietnameseModel;
 extern const SequenceModel Windows_1258VietnameseModel;
 
 #endif /* nsSingleByteCharSetProber_h__ */

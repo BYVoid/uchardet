@@ -104,7 +104,8 @@ nsSBCSGroupProber::nsSBCSGroupProber()
   mProbers[28] = new nsSingleByteCharSetProber(&Iso_8859_6ArabicModel);
   mProbers[29] = new nsSingleByteCharSetProber(&Windows_1256ArabicModel);
 
-  mProbers[30] = new nsSingleByteCharSetProber(&Windows_1258VietnameseModel);
+  mProbers[30] = new nsSingleByteCharSetProber(&VisciiVietnameseModel);
+  mProbers[31] = new nsSingleByteCharSetProber(&Windows_1258VietnameseModel);
 
   Reset();
 }
