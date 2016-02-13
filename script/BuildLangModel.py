@@ -233,6 +233,7 @@ def visit_pages(titles, depth, lang, logfd):
         except (wikipedia.exceptions.PageError,
                 wikipedia.exceptions.DisambiguationError):
             # Let's just discard a page when I get an exception.
+            print("Discarding page {}.\n".format(title))
             continue
         logfd.write("\n{} (revision {})".format(title, page.revision_id))
 
