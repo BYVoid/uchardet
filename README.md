@@ -71,6 +71,7 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
     * ISO-8859-3
     * ISO-8859-9
   * Vietnamese:
+    * VISCII
     * Windows-1258
   * Others
     * WINDOWS-1252
