@@ -26,6 +26,10 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
     * EUC-TW
     * GB18030
     * HZ-GB-2312
+  * Danish
+    * ISO-8859-1
+    * ISO-8859-15
+    * WINDOWS-1252
   * English
     * ASCII
   * Esperanto
