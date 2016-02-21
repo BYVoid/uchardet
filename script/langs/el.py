@@ -53,11 +53,3 @@ alphabet = 'αβγδεζηθικλμνξοπρσςτυφχψω'
 start_pages = ['Πύλη:Κύρια']
 wikipedia_code = code
 case_mapping = True
-
-# A function to clean content returned by the `wikipedia` python lib,
-# in case some unwanted data has been overlooked.
-def clean_wikipedia_content(content):
-    cleaned = re.sub(r'(=+) *([^=]+) *\1',
-                     r'\2',
-                     content)
-    return cleaned

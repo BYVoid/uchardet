@@ -57,11 +57,3 @@ charsets = ['ISO-8859-6', 'WINDOWS-1256']
 start_pages = ['الصفحة_الرئيسية']
 wikipedia_code = code
 case_mapping = False
-
-# A function to clean content returned by the `wikipedia` python lib,
-# in case some unwanted data has been overlooked.
-def clean_wikipedia_content(content):
-    cleaned = re.sub(r'(=+) *([^=]+) *\1',
-                     r'\2',
-                     content)
-    return cleaned

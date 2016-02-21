@@ -172,6 +172,9 @@ def process_text(text, lang):
 
     if lang.clean_wikipedia_content is not None:
         content = lang.clean_wikipedia_content(text)
+    # Clean out the Wikipedia syntax for titles.
+    content = re.sub(r'(=+) *([^=]+) *\1',
+                     r'\2', content)
     # Clean multiple spaces. Newlines and such are normalized to spaces,
     # since they have basically a similar role in the purpose of uchardet.
     content = re.sub(r'\s+', ' ', content)

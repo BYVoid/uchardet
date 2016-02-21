@@ -65,12 +65,3 @@ wikipedia_code = code
 # This is wrong when it comes to Turkish.
 custom_case_mapping = { 'İ': 'i', 'I': 'ı' }
 case_mapping = True
-
-# A function to clean content returned by the `wikipedia` python lib,
-# in case some unwanted data has been overlooked.
-def clean_wikipedia_content(content):
-    # Get rid of title syntax: "=== Articles connexes ==="
-    cleaned = re.sub(r'(=+) *([^=]+) *\1',
-                     r'\2',
-                     content)
-    return cleaned

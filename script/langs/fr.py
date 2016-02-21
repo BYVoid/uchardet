@@ -70,9 +70,10 @@ case_mapping = True
 
 # A function to clean content returned by the `wikipedia` python lib,
 # in case some unwanted data has been overlooked.
+# Note that we are already cleaning away the '=' from the title syntax
+# of Wikipedia, as well as double spaces. But sometimes, Wikipedia in
+# some language may return weird syntax or UI text which should be
+# discarded. If you encounter one of these cases, use this function.
 def clean_wikipedia_content(content):
-    # We get modify link in the text: "=== Articles connexesModifier ==="
-    cleaned = re.sub(r'(=+) *([^=]+) *\1',
-                     r'\2',
-                     content)
-    return cleaned
+    # Do your garbage text cleaning here.
+    return content

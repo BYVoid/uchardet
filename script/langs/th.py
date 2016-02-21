@@ -53,10 +53,3 @@ charsets = ['ISO-8859-11', 'TIS-620']
 start_pages = ['หน้าหลัก']
 wikipedia_code = code
 case_mapping = False
-
-def clean_wikipedia_content(content):
-    # Get rid of title syntax: "=== Articles connexes ==="
-    cleaned = re.sub(r'(=+) *([^=]+) *\1',
-                     r'\2',
-                     content)
-    return cleaned
