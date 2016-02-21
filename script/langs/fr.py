@@ -72,7 +72,7 @@ case_mapping = True
 # in case some unwanted data has been overlooked.
 def clean_wikipedia_content(content):
     # We get modify link in the text: "=== Articles connexesModifier ==="
-    cleaned = re.sub(r'(=+) *([^=]+) *Modifier \1',
+    cleaned = re.sub(r'(=+) *([^=]+) *\1',
                      r'\2',
                      content)
     return cleaned

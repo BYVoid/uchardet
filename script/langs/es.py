@@ -71,7 +71,7 @@ case_mapping = True
 # A function to clean content returned by the `wikipedia` python lib,
 # in case some unwanted data has been overlooked.
 def clean_wikipedia_content(content):
-    cleaned = re.sub(r'(=+) *([^=]+) *Editar \1',
+    cleaned = re.sub(r'(=+) *([^=]+) *\1',
                      r'\2',
                      content)
     return cleaned
