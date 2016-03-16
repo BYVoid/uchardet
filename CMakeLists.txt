@@ -69,6 +69,8 @@ if (BUILD_SHARED_LIBS)
     option(BUILD_STATIC "Build static library"
            ON)
 endif (BUILD_SHARED_LIBS)
+option(BUILD_BINARY "Build executable"
+       ON)
 
 configure_file(
 	uchardet.pc.in

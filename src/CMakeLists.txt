@@ -132,4 +132,6 @@ install(
 
 include(symbols.cmake)
 
+if (BUILD_BINARY)
 add_subdirectory(tools)
+endif (BUILD_BINARY)
