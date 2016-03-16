@@ -42,7 +42,9 @@ set(
 )
 
 set (UCHARDET_TARGET libuchardet)
+if (BUILD_STATIC AND BUILD_SHARED_LIBS)
 set (UCHARDET_STATIC_TARGET libuchardet_static)
+endif ()
 
 add_definitions(
 	-DPKGDATADIR="${DIR_SHARE_OPENCC}"
@@ -57,13 +59,13 @@ add_library(
 	${UCHARDET_SOURCES}
 )
 
-if (BUILD_STATIC)
+if (UCHARDET_STATIC_TARGET)
     add_library(
             ${UCHARDET_STATIC_TARGET}
             STATIC
             ${UCHARDET_SOURCES}
     )
-endif (BUILD_STATIC)
+endif (UCHARDET_STATIC_TARGET)
 
 set_target_properties(
 	${UCHARDET_TARGET}
@@ -78,7 +80,7 @@ set_target_properties(
 			0
 )
 
-if (BUILD_STATIC)
+if (UCHARDET_STATIC_TARGET)
     set_target_properties(
         ${UCHARDET_STATIC_TARGET}
         PROPERTIES
@@ -87,7 +89,7 @@ if (BUILD_STATIC)
             OUTPUT_NAME
                 uchardet
     )
-endif (BUILD_STATIC)
+endif (UCHARDET_STATIC_TARGET)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
 	add_definitions(
@@ -116,14 +118,14 @@ install(
 )
 endif (NOT WIN32)
 
-if (BUILD_STATIC)
+if (UCHARDET_STATIC_TARGET)
     install(
         TARGETS
             ${UCHARDET_STATIC_TARGET}
         ARCHIVE DESTINATION
             ${DIR_LIBRARY_STATIC}
     )
-endif (BUILD_STATIC)
+endif (UCHARDET_STATIC_TARGET)
 
 install(
 	FILES
