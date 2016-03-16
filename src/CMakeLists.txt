@@ -108,7 +108,7 @@ install(
 	TARGETS
 		${UCHARDET_TARGET}
         RUNTIME DESTINATION
-                ${DIR_BIN}
+                ${CMAKE_INSTALL_BINDIR}
 	ARCHIVE DESTINATION
 		${DIR_LIBRARY}
 )
