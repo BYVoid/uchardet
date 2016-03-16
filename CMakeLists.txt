@@ -63,8 +63,12 @@ set (DIR_SHARE_LOCALE ${DIR_SHARE}/locale)
 
 ######## Configuration
 
-option(BUILD_STATIC "Build static library"
+option(BUILD_SHARED_LIBS "Build shared library and link executable against it"
        ON)
+if (BUILD_SHARED_LIBS)
+    option(BUILD_STATIC "Build static library"
+           ON)
+endif (BUILD_SHARED_LIBS)
 
 configure_file(
 	uchardet.pc.in

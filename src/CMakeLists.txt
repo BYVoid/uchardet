@@ -54,7 +54,6 @@ add_definitions(
 
 add_library(
 	${UCHARDET_TARGET}
-	SHARED
 	${UCHARDET_SOURCES}
 )
 
