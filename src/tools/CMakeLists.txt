@@ -16,8 +16,6 @@ target_link_libraries(
 install(
 	TARGETS
 		uchardet
-	RUNTIME
-	DESTINATION
+	RUNTIME DESTINATION
 		${CMAKE_INSTALL_BINDIR}
 )
-

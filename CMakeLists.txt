@@ -36,8 +36,7 @@ set (DIR_INCLUDE ${DIR_PREFIX}/include)
 set (DIR_SHARE ${DIR_PREFIX}/share)
 set (DIR_ETC ${DIR_PREFIX}/etc)
 
-set (CMAKE_INSTALL_BINDIR bin
-     CACHE STRING "Install location of executables")
+set (CMAKE_INSTALL_BINDIR bin CACHE STRING "Install location of executables")
 
 if (DEFINED CMAKE_INSTALL_LIBDIR)
 	set (DIR_LIBRARY ${CMAKE_INSTALL_LIBDIR})
@@ -62,13 +61,11 @@ set (DIR_SHARE_LOCALE ${DIR_SHARE}/locale)
 ######## Configuration
 
 option(BUILD_SHARED_LIBS "Build shared library and link executable against it"
-       ON)
+	ON)
 if (BUILD_SHARED_LIBS)
-    option(BUILD_STATIC "Build static library"
-           ON)
+	option(BUILD_STATIC "Build static library" ON)
 endif (BUILD_SHARED_LIBS)
-option(BUILD_BINARY "Build executable"
-       ON)
+option(BUILD_BINARY "Build executable" ON)
 
 configure_file(
 	uchardet.pc.in
