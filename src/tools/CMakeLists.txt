@@ -18,6 +18,6 @@ install(
 		uchardet
 	RUNTIME
 	DESTINATION
-		${DIR_BIN}
+		${CMAKE_INSTALL_BINDIR}
 )
 

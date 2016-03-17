@@ -43,7 +43,9 @@ set(
 )
 
 set (UCHARDET_TARGET libuchardet)
+if (BUILD_STATIC AND BUILD_SHARED_LIBS)
 set (UCHARDET_STATIC_TARGET libuchardet_static)
+endif ()
 
 add_definitions(
 	-DPKGDATADIR="${DIR_SHARE_OPENCC}"
@@ -55,17 +57,16 @@ add_definitions(
 
 add_library(
 	${UCHARDET_TARGET}
-	SHARED
 	${UCHARDET_SOURCES}
 )
 
-if (BUILD_STATIC)
+if (UCHARDET_STATIC_TARGET)
     add_library(
             ${UCHARDET_STATIC_TARGET}
             STATIC
             ${UCHARDET_SOURCES}
     )
-endif (BUILD_STATIC)
+endif (UCHARDET_STATIC_TARGET)
 
 set_target_properties(
 	${UCHARDET_TARGET}
@@ -80,7 +81,7 @@ set_target_properties(
 			0
 )
 
-if (BUILD_STATIC)
+if (UCHARDET_STATIC_TARGET)
     set_target_properties(
         ${UCHARDET_STATIC_TARGET}
         PROPERTIES
@@ -89,7 +90,7 @@ if (BUILD_STATIC)
             OUTPUT_NAME
                 uchardet
     )
-endif (BUILD_STATIC)
+endif (UCHARDET_STATIC_TARGET)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
 	add_definitions(
@@ -100,30 +101,32 @@ endif (CMAKE_BUILD_TYPE MATCHES Debug)
 
 if (NOT WIN32)
 install(
-	TARGETS
-		${UCHARDET_TARGET}
-	LIBRARY DESTINATION
-		${DIR_LIBRARY}
+    TARGETS
+        ${UCHARDET_TARGET}
+    LIBRARY DESTINATION
+        ${DIR_LIBRARY}
+    ARCHIVE DESTINATION
+        ${DIR_LIBRARY}
 )
 else (NOT WIN32)
 install(
-	TARGETS
-		${UCHARDET_TARGET}
-        RUNTIME DESTINATION
-                ${DIR_BIN}
-	ARCHIVE DESTINATION
-		${DIR_LIBRARY}
+    TARGETS
+        ${UCHARDET_TARGET}
+    RUNTIME DESTINATION
+        ${CMAKE_INSTALL_BINDIR}
+    ARCHIVE DESTINATION
+        ${DIR_LIBRARY}
 )
 endif (NOT WIN32)
 
-if (BUILD_STATIC)
+if (UCHARDET_STATIC_TARGET)
     install(
         TARGETS
             ${UCHARDET_STATIC_TARGET}
         ARCHIVE DESTINATION
             ${DIR_LIBRARY_STATIC}
     )
-endif (BUILD_STATIC)
+endif (UCHARDET_STATIC_TARGET)
 
 install(
 	FILES
@@ -134,4 +137,6 @@ install(
 
 include(symbols.cmake)
 
+if (BUILD_BINARY)
 add_subdirectory(tools)
+endif (BUILD_BINARY)

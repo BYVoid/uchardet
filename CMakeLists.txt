@@ -34,8 +34,10 @@ set (DIR_LIBRARY ${DIR_PREFIX}/${CMAKE_SHARED_LIBRARY_PREFIX})
 set (DIR_LIBRARY_STATIC ${DIR_PREFIX}/${CMAKE_STATIC_LIBRARY_PREFIX})
 set (DIR_INCLUDE ${DIR_PREFIX}/include)
 set (DIR_SHARE ${DIR_PREFIX}/share)
-set (DIR_BIN ${DIR_PREFIX}/bin)
 set (DIR_ETC ${DIR_PREFIX}/etc)
+
+set (CMAKE_INSTALL_BINDIR bin
+     CACHE STRING "Install location of executables")
 
 if (DEFINED CMAKE_INSTALL_LIBDIR)
 	set (DIR_LIBRARY ${CMAKE_INSTALL_LIBDIR})
@@ -59,7 +61,13 @@ set (DIR_SHARE_LOCALE ${DIR_SHARE}/locale)
 
 ######## Configuration
 
-option(BUILD_STATIC "Build static library"
+option(BUILD_SHARED_LIBS "Build shared library and link executable against it"
+       ON)
+if (BUILD_SHARED_LIBS)
+    option(BUILD_STATIC "Build static library"
+           ON)
+endif (BUILD_SHARED_LIBS)
+option(BUILD_BINARY "Build executable"
        ON)
 
 configure_file(
