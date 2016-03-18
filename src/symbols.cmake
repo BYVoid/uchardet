@@ -25,7 +25,7 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL GNU)
 	set(_version_script "${CMAKE_CURRENT_BINARY_DIR}/version.script")
 	file(WRITE ${_version_script} "${_symbols}\n")
 
-	set(LINK_FLAGS "${LINK_FLAGS} -Wl,--version-script,${_version_script}")
+	set(LINK_FLAGS "${LINK_FLAGS} -Wl,--version-script,\"${_version_script}\"")
 	
 endif (APPLE)
 
