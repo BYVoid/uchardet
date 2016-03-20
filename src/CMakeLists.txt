@@ -1,4 +1,3 @@
-
 set(
 	UCHARDET_HEADERS
 	uchardet.h
@@ -44,7 +43,7 @@ set(
 
 set (UCHARDET_TARGET libuchardet)
 if (BUILD_STATIC AND BUILD_SHARED_LIBS)
-set (UCHARDET_STATIC_TARGET libuchardet_static)
+	set (UCHARDET_STATIC_TARGET libuchardet_static)
 endif ()
 
 add_definitions(
@@ -61,11 +60,11 @@ add_library(
 )
 
 if (UCHARDET_STATIC_TARGET)
-    add_library(
-            ${UCHARDET_STATIC_TARGET}
-            STATIC
-            ${UCHARDET_SOURCES}
-    )
+	add_library(
+		${UCHARDET_STATIC_TARGET}
+		STATIC
+		${UCHARDET_SOURCES}
+	)
 endif (UCHARDET_STATIC_TARGET)
 
 set_target_properties(
@@ -82,14 +81,14 @@ set_target_properties(
 )
 
 if (UCHARDET_STATIC_TARGET)
-    set_target_properties(
-        ${UCHARDET_STATIC_TARGET}
-        PROPERTIES
-            LINKER_LANGUAGE
-                CXX
-            OUTPUT_NAME
-                uchardet
-    )
+	set_target_properties(
+		${UCHARDET_STATIC_TARGET}
+		PROPERTIES
+			LINKER_LANGUAGE
+				CXX
+			OUTPUT_NAME
+				uchardet
+	)
 endif (UCHARDET_STATIC_TARGET)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
@@ -100,32 +99,32 @@ if (CMAKE_BUILD_TYPE MATCHES Debug)
 endif (CMAKE_BUILD_TYPE MATCHES Debug)
 
 if (NOT WIN32)
-install(
-    TARGETS
-        ${UCHARDET_TARGET}
-    LIBRARY DESTINATION
-        ${DIR_LIBRARY}
-    ARCHIVE DESTINATION
-        ${DIR_LIBRARY}
-)
+	install(
+		TARGETS
+			${UCHARDET_TARGET}
+		LIBRARY DESTINATION
+			${DIR_LIBRARY}
+		ARCHIVE DESTINATION
+			${DIR_LIBRARY}
+	)
 else (NOT WIN32)
-install(
-    TARGETS
-        ${UCHARDET_TARGET}
-    RUNTIME DESTINATION
-        ${CMAKE_INSTALL_BINDIR}
-    ARCHIVE DESTINATION
-        ${DIR_LIBRARY}
-)
+	install(
+		TARGETS
+			${UCHARDET_TARGET}
+		RUNTIME DESTINATION
+			${CMAKE_INSTALL_BINDIR}
+		ARCHIVE DESTINATION
+			${DIR_LIBRARY}
+	)
 endif (NOT WIN32)
 
 if (UCHARDET_STATIC_TARGET)
-    install(
-        TARGETS
-            ${UCHARDET_STATIC_TARGET}
-        ARCHIVE DESTINATION
-            ${DIR_LIBRARY_STATIC}
-    )
+	install(
+		TARGETS
+			${UCHARDET_STATIC_TARGET}
+		ARCHIVE DESTINATION
+			${DIR_LIBRARY_STATIC}
+	)
 endif (UCHARDET_STATIC_TARGET)
 
 install(
@@ -138,5 +137,5 @@ install(
 include(symbols.cmake)
 
 if (BUILD_BINARY)
-add_subdirectory(tools)
+	add_subdirectory(tools)
 endif (BUILD_BINARY)
