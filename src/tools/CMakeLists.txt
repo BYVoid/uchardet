@@ -10,7 +10,7 @@ add_executable(
 
 target_link_libraries(
 	uchardet
-	${UCHARDET_TARGET}
+	${UCHARDET_LIBRARY}
 )
 
 install(
