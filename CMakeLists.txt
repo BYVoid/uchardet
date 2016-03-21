@@ -1,5 +1,5 @@
 ######## Project settings
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.5)
 set (PACKAGE_NAME uchardet)
 project (${PACKAGE_NAME} CXX C)
 enable_testing()
