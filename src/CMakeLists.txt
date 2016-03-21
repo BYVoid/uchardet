@@ -42,6 +42,8 @@ set(
 )
 
 set (UCHARDET_LIBRARY libuchardet)
+set (UCHARDET_LIBRARY libuchardet PARENT_SCOPE)
+
 if (BUILD_STATIC AND BUILD_SHARED_LIBS)
 	set (UCHARDET_STATIC_LIBRARY libuchardet_static)
 endif ()
