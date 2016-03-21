@@ -54,6 +54,13 @@ add_definitions(
 	-Wall
 )
 
+if (CMAKE_BUILD_TYPE MATCHES Debug)
+	add_definitions(
+		-O0
+		-g3
+	)
+endif (CMAKE_BUILD_TYPE MATCHES Debug)
+
 add_library(
 	${UCHARDET_LIBRARY}
 	${UCHARDET_SOURCES}
@@ -90,13 +97,6 @@ if (UCHARDET_STATIC_LIBRARY)
 				${PACKAGE_NAME}
 	)
 endif (UCHARDET_STATIC_LIBRARY)
-
-if (CMAKE_BUILD_TYPE MATCHES Debug)
-	add_definitions(
-		-O0
-		-g3
-	)
-endif (CMAKE_BUILD_TYPE MATCHES Debug)
 
 if (NOT WIN32)
 	install(
