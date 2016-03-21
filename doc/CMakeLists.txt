@@ -2,5 +2,5 @@ install(
 	FILES
 		uchardet.1
 	DESTINATION
-		${DIR_SHARE}/man/man1
+		${CMAKE_INSTALL_MANDIR}/man1
 )

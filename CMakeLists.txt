@@ -29,43 +29,16 @@ set (
 
 ######## Directory
 
-set (DIR_PREFIX ${CMAKE_INSTALL_PREFIX})
-set (DIR_LIBRARY ${DIR_PREFIX}/${CMAKE_SHARED_LIBRARY_PREFIX})
-set (DIR_LIBRARY_STATIC ${DIR_PREFIX}/${CMAKE_STATIC_LIBRARY_PREFIX})
-set (DIR_INCLUDE ${DIR_PREFIX}/include)
-set (DIR_SHARE ${DIR_PREFIX}/share)
-set (DIR_ETC ${DIR_PREFIX}/etc)
-
-set (CMAKE_INSTALL_BINDIR bin CACHE STRING "Install location of executables")
-
-if (DEFINED CMAKE_INSTALL_LIBDIR)
-	set (DIR_LIBRARY ${CMAKE_INSTALL_LIBDIR})
-	set (DIR_LIBRARY_STATIC ${CMAKE_INSTALL_LIBDIR})
-endif (DEFINED CMAKE_INSTALL_LIBDIR)
-
-if (DEFINED SHARE_INSTALL_PREFIX)
-	set (DIR_SHARE ${SHARE_INSTALL_PREFIX})
-endif (DEFINED SHARE_INSTALL_PREFIX)
-
-if (DEFINED INCLUDE_INSTALL_DIR)
-	set (DIR_INCLUDE ${INCLUDE_INSTALL_DIR})
-endif (DEFINED INCLUDE_INSTALL_DIR)
-
-if (DEFINED SYSCONF_INSTALL_DIR)
-	set (DIR_ETC ${SYSCONF_INSTALL_DIR})
-endif (DEFINED SYSCONF_INSTALL_DIR)
-
-set (DIR_SHARE_UCHARDET ${DIR_SHARE}/${PACKAGE_NAME})
-set (DIR_SHARE_LOCALE ${DIR_SHARE}/locale)
+include(GNUInstallDirs)
 
 ######## Configuration
 
-option(BUILD_SHARED_LIBS "Build shared library and link executable against it"
-	ON)
+option(BUILD_BINARY "Build executable" ON)
+option(BUILD_SHARED_LIBS "Build shared library and link executable to it" ON)
+
 if (BUILD_SHARED_LIBS)
 	option(BUILD_STATIC "Build static library" ON)
 endif (BUILD_SHARED_LIBS)
-option(BUILD_BINARY "Build executable" ON)
 
 configure_file(
 	uchardet.pc.in
@@ -77,7 +50,7 @@ install(
 	FILES
 		${CMAKE_BINARY_DIR}/uchardet.pc
 	DESTINATION
-		${DIR_LIBRARY}/pkgconfig
+		${CMAKE_INSTALL_LIBDIR}/pkgconfig
 )
 
 ######## Subdirectories
