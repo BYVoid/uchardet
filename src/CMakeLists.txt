@@ -50,7 +50,6 @@ endif ()
 
 add_definitions(
 	-DVERSION="${UCHARDET_VERSION}"
-	-DPACKAGE_NAME="${PACKAGE_NAME}"
 	-Wall
 )
 
