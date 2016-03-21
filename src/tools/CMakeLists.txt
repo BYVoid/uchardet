@@ -3,19 +3,21 @@ set(
 	uchardet.cpp
 )
 
+set(UCHARDET_BINARY uchardet)
+
 add_executable(
-	uchardet
+	${UCHARDET_BINARY}
 	${UCHARDET_SOURCES}
 )
 
 target_link_libraries(
-	uchardet
+	${UCHARDET_BINARY}
 	${UCHARDET_LIBRARY}
 )
 
 install(
 	TARGETS
-		uchardet
+		${UCHARDET_BINARY}
 	RUNTIME DESTINATION
 		${CMAKE_INSTALL_BINDIR}
 )

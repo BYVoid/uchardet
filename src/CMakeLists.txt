@@ -73,7 +73,7 @@ set_target_properties(
 		LINKER_LANGUAGE
 			CXX
 		OUTPUT_NAME
-			uchardet
+			${PACKAGE_NAME}
 		VERSION
 			0.0.0
 		SOVERSION
@@ -87,7 +87,7 @@ if (UCHARDET_STATIC_LIBRARY)
 			LINKER_LANGUAGE
 				CXX
 			OUTPUT_NAME
-				uchardet
+				${PACKAGE_NAME}
 	)
 endif (UCHARDET_STATIC_LIBRARY)
 
