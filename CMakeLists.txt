@@ -12,7 +12,7 @@ set (UCHARDET_VERSION_MINOR 0)
 set (UCHARDET_VERSION_REVISION 5)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
-	set (version_suffix .Debug)
+	set (version_suffix .debug)
 endif (CMAKE_BUILD_TYPE MATCHES Debug)
 
 set (
