@@ -1,7 +1,5 @@
-prefix=@DIR_PREFIX@
-exec_prefix=${prefix}
-libdir=@DIR_LIBRARY@
-includedir=@DIR_INCLUDE@
+libdir=@CMAKE_INSTALL_FULL_LIBDIR@
+includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
 
 Name: uchardet
 Description: An encoding detector library ported from Mozilla
