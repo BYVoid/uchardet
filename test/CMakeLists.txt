@@ -10,7 +10,7 @@ add_executable(
 
 target_link_libraries(
 	uchardet-tests
-	libuchardet
+	${UCHARDET_LIBRARY}
 )
 
 set_target_properties(
