@@ -49,7 +49,7 @@ charsets = ['ISO-8859-7', 'WINDOWS-1253']
 
 ## Optional Properties ##
 
-alphabet = 'αβγδεζηθικλμνξοπρσςτυφχψω'
+alphabet = 'αβγδεζηθικλμνξοπρσςτυφχψωάέήίόύώ'
 start_pages = ['Πύλη:Κύρια']
 wikipedia_code = code
 case_mapping = True
