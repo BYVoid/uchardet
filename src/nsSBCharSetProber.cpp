@@ -124,7 +124,7 @@ float nsSingleByteCharSetProber::GetConfidence(void)
      * character). This could make the difference between very closely related
      * charsets used for the same language.
      */
-    r = r*mSeqCounters[POSITIVE_CAT] / mTotalChar;
+    r = r * (mSeqCounters[POSITIVE_CAT] + (float) mSeqCounters[PROBABLE_CAT] / 4) / mTotalChar;
     /* The more control characters (proportionnaly to the size of the text), the
      * less confident we become in the current charset.
      */
