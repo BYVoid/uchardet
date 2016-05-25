@@ -138,7 +138,7 @@ float nsSingleByteCharSetProber::GetConfidence(void)
 #endif
 }
 
-const char* nsSingleByteCharSetProber::GetCharSetName() 
+const char* nsSingleByteCharSetProber::GetCharSetName()
 {
   if (!mNameProber)
     return mModel->charsetName;
