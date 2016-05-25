@@ -164,14 +164,14 @@ characters = {}
 sequences = {}
 prev_char = None
 
-def process_text(text, lang):
+def process_text(content, lang):
     global charsets
     global characters
     global sequences
     global prev_char
 
     if lang.clean_wikipedia_content is not None:
-        content = lang.clean_wikipedia_content(text)
+        content = lang.clean_wikipedia_content(content)
     # Clean out the Wikipedia syntax for titles.
     content = re.sub(r'(=+) *([^=]+) *\1',
                      r'\2', content)
