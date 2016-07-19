@@ -140,8 +140,8 @@ See [uchardet.h](https://github.com/BYVoid/uchardet/blob/master/src/uchardet.h)
 
 ## Licenses
 
-[Mozilla Public License Version 1.1](http://www.mozilla.org/MPL/1.1/)
-[GNU General Public License, version 2.0](http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) or later.
-[GNU Lesser General Public License, version 2.1](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html) or later.
+* [Mozilla Public License Version 1.1](http://www.mozilla.org/MPL/1.1/)
+* [GNU General Public License, version 2.0](http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) or later.
+* [GNU Lesser General Public License, version 2.1](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html) or later.
 
 See the file `COPYING` for the complete text of these 3 licenses.
