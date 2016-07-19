@@ -1,6 +1,6 @@
 # uchardet
 
-[uchardet](https://github.com/BYVoid/uchardet) is an encoding detector library, which takes a sequence of bytes in an unknown character encoding without any additional information, and attempts to determine the encoding of the text. Returned encoding names are [iconv](https://www.gnu.org/software/libiconv/)-compatible.
+[uchardet](https://www.freedesktop.org/wiki/Software/uchardet/) is an encoding detector library, which takes a sequence of bytes in an unknown character encoding without any additional information, and attempts to determine the encoding of the text. Returned encoding names are [iconv](https://www.gnu.org/software/libiconv/)-compatible.
 
 uchardet started as a C language binding of the original C++ implementation of the universal charset detection library by Mozilla. It can now detect more charsets, and more reliably than the original implementation.
 
@@ -100,6 +100,15 @@ Techniques used by universalchardet are described at http://www.mozilla.org/proj
 
 ### Build from source
 
+Releases are available from:
+https://www.freedesktop.org/software/uchardet/releases/
+
+If you prefer a development version, clone the git repository:
+
+    git clone git://anongit.freedesktop.org/uchardet/uchardet
+
+The source can be browsed at: https://cgit.freedesktop.org/uchardet/uchardet/
+
     cmake .
     make
     make install
@@ -113,7 +122,7 @@ uchardet Command Line Tool
 Version 0.0.5
 
 Authors: BYVoid, Jehan
-Bug Report: https://github.com/BYVoid/uchardet/issues
+Bug Report: https://bugs.freedesktop.org/enter_bug.cgi?product=uchardet
 
 Usage:
  uchardet [Options] [File]...
@@ -124,7 +133,7 @@ Options:
  ```
 ### Library
 
-See [uchardet.h](https://github.com/BYVoid/uchardet/blob/master/src/uchardet.h)
+See [uchardet.h](https://cgit.freedesktop.org/uchardet/uchardet/tree/src/uchardet.h)
 
 ## Related Projects
 

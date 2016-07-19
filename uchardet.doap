@@ -29,11 +29,11 @@
       plus de codages de caractères que l'originale.
   </description>
 
-  <homepage rdf:resource="https://github.com/BYVoid/uchardet" />
+  <homepage rdf:resource="https://www.freedesktop.org/wiki/Software/uchardet/" />
 
-  <download-page rdf:resource="https://github.com/BYVoid/uchardet/releases" />
+  <download-page rdf:resource="https://www.freedesktop.org/software/uchardet/releases/" />
 
-  <bug-database rdf:resource="https://github.com/BYVoid/uchardet/issues" />
+  <bug-database rdf:resource="https://bugs.freedesktop.org/enter_bug.cgi?product=uchardet" />
 
   <programming-language>C</programming-language>
   <programming-language>C++</programming-language>
