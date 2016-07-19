@@ -119,7 +119,7 @@ The source can be browsed at: https://cgit.freedesktop.org/uchardet/uchardet/
 
 ```
 uchardet Command Line Tool
-Version 0.0.5
+Version 0.0.6
 
 Authors: BYVoid, Jehan
 Bug Report: https://bugs.freedesktop.org/enter_bug.cgi?product=uchardet
