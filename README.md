@@ -1,5 +1,21 @@
 # uchardet
 
+---
+
+**uchardet moved!**
+
+uchardet is now a [freedesktop](https://www.freedesktop.org/wiki/) project.
+
+* The page: https://www.freedesktop.org/wiki/Software/uchardet/
+* Bug reports: https://bugs.freedesktop.org/enter_bug.cgi?product=uchardet
+* Releases: https://www.freedesktop.org/software/uchardet/releases/
+* Code: https://cgit.freedesktop.org/uchardet/uchardet/
+
+Please update your links to the project. New releases, code updates and
+announcements will happen on the Freedesktop hosting.
+
+---
+
 [uchardet](https://www.freedesktop.org/wiki/Software/uchardet/) is an encoding detector library, which takes a sequence of bytes in an unknown character encoding without any additional information, and attempts to determine the encoding of the text. Returned encoding names are [iconv](https://www.gnu.org/software/libiconv/)-compatible.
 
 uchardet started as a C language binding of the original C++ implementation of the universal charset detection library by Mozilla. It can now detect more charsets, and more reliably than the original implementation.
